@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Get in touch with Digi Brandora's digital strategists and request your custom performance marketing roadmap.">
+  <title>Contact Us | Digi Brandora</title>
+  <link rel="stylesheet" href="styles.css?v=2.0">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='10' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/><circle cx='10' cy='18' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/><circle cx='22' cy='18' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/></svg>">
+</head>
+
+<body class="preloading-active">
+  <script>
+    if (sessionStorage.getItem('brandora_preloaded')) {
+      document.body.classList.remove('preloading-active');
+      document.body.classList.add('preloading-done');
+      var sheet = document.createElement('style');
+      sheet.innerHTML = "#sitePreloader { display: none !important; }";
+      document.head.appendChild(sheet);
+    }
+  </script>
+
+  <!-- --- PRELOADER SYSTEM --- -->
+  <div id="sitePreloader" class="preloader-overlay">
+    <div class="preloader-panel panel-left"></div>
+    <div class="preloader-panel panel-right"></div>
+    <div class="preloader-stars"></div>
+    <div class="preloader-content">
+      <div class="preloader-rocket-container" id="preloaderRocketContainer">
+        <svg class="preloader-rocket" id="preloaderRocket" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Rocket Fins -->
+          <path d="M7 13C5 14 3 17 3 19C3 20 4 20.5 5 20C6 19.5 7 17 7 13Z" fill="#00df82" />
+          <path d="M17 13C19 14 21 17 21 19C21 20 20 20.5 19 20C18 19.5 17 17 17 13Z" fill="#00df82" />
+          <!-- Rocket Body -->
+          <path d="M12 2C12 2 17 6 17 13C17 17 14 19 12 21C10 19 7 17 7 13C7 6 12 2 12 2Z" fill="url(#rocketGrad)" />
+          <!-- Rocket Window -->
+          <circle cx="12" cy="9" r="2.5" fill="#0a0f1d" stroke="#00df82" stroke-width="1.5" />
+          <!-- Rocket Thruster flame -->
+          <path class="rocket-flame" d="M12 21C12 21 14 22.5 13 25C12 27 12 27 12 27C12 27 12 27 11 25C10 22.5 12 21 12 21Z" fill="url(#flameGrad)" />
+          <!-- Definitions -->
+          <defs>
+            <linearGradient id="rocketGrad" x1="12" y1="2" x2="12" y2="21" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="100%" stop-color="#025a4f" />
+            </linearGradient>
+            <linearGradient id="flameGrad" x1="12" y1="21" x2="12" y2="27" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ff7b00" />
+              <stop offset="50%" stop-color="#ffae00" />
+              <stop offset="100%" stop-color="#ff0000" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="preloader-launch-smoke"></div>
+      </div>
+      <div class="preloader-brand">
+        <span class="preloader-logo-text">Digi Brandora</span>
+        <div class="preloader-counter-wrapper">
+          <span class="preloader-counter" id="preloaderCounter">00</span><span class="preloader-percent">%</span>
+        </div>
+        <div class="preloader-progress-bar">
+          <div class="preloader-progress-fill" id="preloaderProgressFill"></div>
+        </div>
+        <span class="preloader-status" id="preloaderStatus">INITIATING SYSTEMS...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- HEADER NAVBAR --- -->
+  <header class="header scrolled" id="mainHeader">
+    <div class="container">
+      <a href="index.html" class="logo" id="logoLink">
+        <span class="logo-icon">
+          <img src="Images/logo.avif" alt="Digi Brandôra Logo" class="logo-img-mark">
+        </span></a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+        <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        <li><a href="#" class="btn btn-talk" data-open-modal="strategyModal">Let's Talk</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- --- PAGE BANNER --- -->
+  <section class="page-banner">
+    <div class="page-banner-glow"></div>
+    <div class="container">
+      <div class="page-banner-content">
+        <span class="hero-sub" style="animation: none;">Let's Connect</span>
+        <h1>Build Your Brand</h1>
+        <p>If you are ready to scale strategically and build a strong premium digital presence, let's connect.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- CONTACT CONTENT GRID --- -->
+  <section class="contact-section-padding section-padding">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Left Side: Details & Live Location Details -->
+        <div class="contact-info-block reveal-left">
+          <span class="section-label">Connect Directly</span>
+          <h2>Let's build systems that generate results.</h2>
+          <p style="color: var(--clr-text-muted-dark); margin-bottom: 20px;">
+            Have a question about our packaging or ready to initiate a discovery strategy? Fill out our floating form or
+            schedule a strategic call.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+
+            <div class="contact-method-card">
+              <div class="contact-method-icon">✉️</div>
+              <div class="contact-method-text">
+                <h4>Email Address</h4>
+                <p>growth@digibrandora.com</p>
+              </div>
+            </div>
+
+            <div class="contact-method-card">
+              <div class="contact-method-icon">📞</div>
+              <div class="contact-method-text">
+                <h4>Phone Pipeline</h4>
+                <p>+91 99999 99999</p>
+              </div>
+            </div>
+
+            <div class="contact-method-card">
+              <div class="contact-method-icon">📍</div>
+              <div class="contact-method-text">
+                <h4>HQ Location</h4>
+                <p>Bangalore, India</p>
+              </div>
+            </div>
+
+            <div class="contact-method-card">
+              <div class="contact-method-icon">⏰</div>
+              <div class="contact-method-text">
+                <h4>Business Hours</h4>
+                <p>Monday – Friday: 9:00 AM – 6:00 PM IST</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Strategy CTA button -->
+          <div
+            style="margin-top: 30px; background-color: var(--clr-bg-slate); border: 1px dashed var(--clr-primary); padding: 30px; border-radius: 12px; text-align: center;">
+            <h4 style="margin-bottom: 12px; color: var(--clr-primary-dark);">Prefer an Instant Calendar Slot?</h4>
+            <p style="font-size: 0.95rem; color: var(--clr-text-muted-dark); margin-bottom: 20px;">Skip the form and
+              reserve your 15-minute Discovery strategy call with our partner directly.</p>
+            <a href="#" class="btn btn-primary" data-open-modal="strategyModal">Book a Free Strategy Call</a>
+          </div>
+        </div>
+
+        <!-- Right Side: Stunning Floating Form -->
+        <div class="reveal-right delay-200">
+          <div class="contact-form-card">
+            <h3 style="margin-bottom: 30px; color: var(--clr-primary-dark);">Request a Custom Proposal</h3>
+
+            <form class="contact-form" id="contactForm">
+
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="contactName" class="form-label">Full Name *</label>
+                  <input type="text" id="contactName" class="form-control" placeholder="Arun Kumar" required>
+                </div>
+                <div class="form-group">
+                  <label for="contactCompany" class="form-label">Company Name</label>
+                  <input type="text" id="contactCompany" class="form-control" placeholder="Digi Brandora">
+                </div>
+              </div>
+
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="contactPhone" class="form-label">Phone Number</label>
+                  <input type="tel" id="contactPhone" class="form-control" placeholder="+91 99999 99999">
+                </div>
+                <div class="form-group">
+                  <label for="contactEmail" class="form-label">Email Address *</label>
+                  <input type="email" id="contactEmail" class="form-control" placeholder="arun@example.com" required>
+                </div>
+              </div>
+
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="contactService" class="form-label">Services Required</label>
+                  <select id="contactService" class="form-control">
+                    <option value="">Select Service...</option>
+                    <option value="strategy">Strategy & Brand Development</option>
+                    <option value="photography">Photography & Visual Production</option>
+                    <option value="video">Video Production</option>
+                    <option value="social">Social Media Marketing</option>
+                    <option value="performance">Performance Ad Campaigns</option>
+                    <option value="web">Website Optimization</option>
+                    <option value="omnichannel">Complete Integrated Growth (All)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="contactBudget" class="form-label">Monthly Budget Range</label>
+                  <select id="contactBudget" class="form-control">
+                    <option value="">Select Budget...</option>
+                    <option value="starter">₹75,000 – ₹2,00,000 / mo</option>
+                    <option value="growth">₹2,00,000 – ₹4,00,000 / mo</option>
+                    <option value="enterprise">₹4,00,000 – ₹8,00,000 / mo</option>
+                    <option value="leader">₹8,00,000+ / mo</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">Your Message *</label>
+                <textarea id="contactMessage" class="form-control" rows="5"
+                  placeholder="Tell us about your brand, current roadblocks, and scaling objectives..."
+                  required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="margin-top: 10px; width: 100%;">Submit Proposal
+                Request</button>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- --- FOOTER --- -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: var(--clr-text-light);">
+            <span class="logo-icon">
+              <img src="Images/logo.avif" alt="Digi Brandôra Logo" class="logo-img-mark">
+            </span></a>
+          <p>
+            An integrated full-service digital agency blending creative excellence with deep platform analytics to drive
+            sustainable brand scaling.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram">IG</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+            <a href="#" class="social-link" aria-label="Facebook">FB</a>
+            <a href="#" class="social-link" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h5>Agency</h5>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="portfolio.html">Featured Works</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html">Privacy Policy</a></li>
+            <li><a href="about.html">Terms of Service</a></li>
+            <li><a href="contact.html">Consultations</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter">
+          <h5>Stay in the Loop</h5>
+          <p>Subscribe to our monthly digest on brand strategy and growth tactics.</p>
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Your work email..." required>
+            <button type="submit" class="newsletter-submit">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Digi Brandôra. All rights reserved. Built with precision.</p>
+        <p>Sustainable Growth. Structured Execution.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- --- BOOKING CALENDAR MODAL --- -->
+  <div class="modal-overlay" id="strategyModal">
+    <div class="modal-box">
+      <button class="modal-close-btn">&times;</button>
+      <h3 class="modal-title">Book a Free Strategy Call</h3>
+      <p class="modal-desc">Select a date and preferred slot below. Our strategist will align directly with you.</p>
+
+      <div class="booking-calendar-wrapper">
+        <div class="form-group">
+          <label for="bookingDate" class="form-label">1. Preferred Date *</label>
+          <input type="date" id="bookingDate" class="form-control" min="2026-05-30">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">2. Preferred Time Slot (IST) *</label>
+          <div class="time-slot-grid">
+            <button class="time-slot-btn">10:00 AM</button>
+            <button class="time-slot-btn">11:30 AM</button>
+            <button class="time-slot-btn">01:00 PM</button>
+            <button class="time-slot-btn">02:30 PM</button>
+            <button class="time-slot-btn">04:00 PM</button>
+            <button class="time-slot-btn">05:30 PM</button>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" id="bookConfirmBtn" style="margin-top: 20px; width: 100%;">Confirm Booking
+          slot</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GSAP & SplitType -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

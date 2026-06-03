@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Digi Brandora is a full-service digital marketing and content production agency helping brands grow through strategy, creativity, and data-driven execution.">
+  <title>Digi Brandora | Create. Capture. Communicate. Convert.</title>
+  <link rel="stylesheet" href="styles.css?v=2.0">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='10' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/><circle cx='10' cy='18' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/><circle cx='22' cy='18' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/></svg>">
+</head>
+<body class="preloading-active">
+  <script>
+    if (sessionStorage.getItem('brandora_preloaded')) {
+      document.body.classList.remove('preloading-active');
+      document.body.classList.add('preloading-done');
+      var sheet = document.createElement('style');
+      sheet.innerHTML = "#sitePreloader { display: none !important; }";
+      document.head.appendChild(sheet);
+    }
+  </script>
+
+  <!-- --- PRELOADER SYSTEM --- -->
+  <div id="sitePreloader" class="preloader-overlay">
+    <div class="preloader-panel panel-left"></div>
+    <div class="preloader-panel panel-right"></div>
+    <div class="preloader-stars"></div>
+    <div class="preloader-content">
+      <div class="preloader-rocket-container" id="preloaderRocketContainer">
+        <svg class="preloader-rocket" id="preloaderRocket" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Rocket Fins -->
+          <path d="M7 13C5 14 3 17 3 19C3 20 4 20.5 5 20C6 19.5 7 17 7 13Z" fill="#00df82" />
+          <path d="M17 13C19 14 21 17 21 19C21 20 20 20.5 19 20C18 19.5 17 17 17 13Z" fill="#00df82" />
+          <!-- Rocket Body -->
+          <path d="M12 2C12 2 17 6 17 13C17 17 14 19 12 21C10 19 7 17 7 13C7 6 12 2 12 2Z" fill="url(#rocketGrad)" />
+          <!-- Rocket Window -->
+          <circle cx="12" cy="9" r="2.5" fill="#0a0f1d" stroke="#00df82" stroke-width="1.5" />
+          <!-- Rocket Thruster flame -->
+          <path class="rocket-flame" d="M12 21C12 21 14 22.5 13 25C12 27 12 27 12 27C12 27 12 27 11 25C10 22.5 12 21 12 21Z" fill="url(#flameGrad)" />
+          <!-- Definitions -->
+          <defs>
+            <linearGradient id="rocketGrad" x1="12" y1="2" x2="12" y2="21" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="100%" stop-color="#025a4f" />
+            </linearGradient>
+            <linearGradient id="flameGrad" x1="12" y1="21" x2="12" y2="27" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ff7b00" />
+              <stop offset="50%" stop-color="#ffae00" />
+              <stop offset="100%" stop-color="#ff0000" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="preloader-launch-smoke"></div>
+      </div>
+      <div class="preloader-brand">
+        <span class="preloader-logo-text">Digi Brandora</span>
+        <div class="preloader-counter-wrapper">
+          <span class="preloader-counter" id="preloaderCounter">00</span><span class="preloader-percent">%</span>
+        </div>
+        <div class="preloader-progress-bar">
+          <div class="preloader-progress-fill" id="preloaderProgressFill"></div>
+        </div>
+        <span class="preloader-status" id="preloaderStatus">INITIATING SYSTEMS...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- HERO VIEWPORT CONTAINER --- -->
+  <div class="hero-viewport-container">
+    <video autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" disablePictureInPicture="true" controlslist="nodownload nofullscreen noremoteplayback" class="hero-video-bg" oncontextmenu="return false;">
+      <source src="https://videotourl.com/videos/1780377789846-0bb9a55c-32a7-4b41-9926-7dea7ff6e2c9.webm" type="video/webm">
+      <source src="https://videotourl.com/videos/1780377562209-6af1d718-cda3-40bb-8309-4a78a23aad9a.mp4" type="video/mp4">
+    </video>
+
+    <!-- --- HEADER NAVBAR --- -->
+    <header class="header" id="mainHeader">
+      <div class="container">
+        <a href="index.html" class="logo" id="logoLink">
+          <span class="logo-icon">
+            <img src="Images/logo.avif" alt="Digi Brandôra Logo" class="logo-img-mark">
+          </span></a>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="#" class="btn btn-talk" data-open-modal="strategyModal">Let's Talk</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- --- HERO SECTION --- -->
+    <section class="hero dark-theme-section" id="heroSection">
+      <!-- Center Headline -->
+      <div class="hero-center">
+        <h1 class="hero-title reveal">Create. Capture. Communicate. Convert.</h1>
+      </div>
+      
+      <!-- Bottom Row -->
+      <div class="hero-bottom-row reveal delay-200">
+        <div class="hero-bottom-left">
+          <p class="hero-description-light">
+            A full-service digital marketing and content production agency helping brands grow through strategy, creativity, and performance-driven execution.
+          </p>
+          <a href="#" class="btn btn-consultation" data-open-modal="strategyModal">Schedule a Consultation</a>
+        </div>
+        
+        <div class="hero-bottom-right">
+          <div class="ratings-area">
+            <div class="profile-stack">
+              <img src="Images/profile1.avif" alt="User Profile 1" class="stack-img">
+              <img src="Images/profile2.avif" alt="User Profile 2" class="stack-img">
+              <img src="Images/profile3.avif" alt="User Profile 3" class="stack-img">
+              <img src="Images/profile4.avif" alt="User Profile 4" class="stack-img">
+              <img src="Images/logo.avif" alt="Digi Brandôra Brand Block" class="stack-img stack-logo">
+            </div>
+            <div class="ratings-info">
+              <img src="Images/5-star.svg" alt="5 Stars" class="star-rating">
+              <span class="trust-text">4K+ trust us</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- --- WHO WE ARE --- -->
+  <section class="who-we-are section-padding" id="whoWeAre">
+    <div class="container">
+      <div class="grid-2">
+        <div class="reveal-left">
+          <span class="section-label">Who We Are</span>
+          <h2>One Agency.<br>Every Digital Need.</h2>
+          <p class="section-header-desc" style="margin-bottom: 24px;">
+            Digi Brandora was built to simplify digital growth for modern brands.
+          </p>
+          <p style="color: var(--clr-text-muted-dark); margin-bottom: 20px;">
+            In today’s competitive landscape, businesses struggle with fragmented marketing — different teams for strategy, content, ads, and design. We solve that by bringing everything under one roof.
+          </p>
+          <p style="color: var(--clr-text-muted-dark);">
+            From brand positioning to photography, from social media management to paid advertising and performance optimization — we manage the entire digital ecosystem with clarity and structure.
+          </p>
+        </div>
+        <div class="reveal-right delay-200" style="display: flex; flex-direction: column; justify-content: center;">
+          <div class="accent-quote-box">
+            <p>Our work is driven by <span>creativity.</span></p>
+            <p>Our decisions are driven by <span>data.</span></p>
+            <p>Our goal is <span>sustainable business growth.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- PARTNER LOGO TICKER --- -->
+  <section class="logo-ticker" id="partnerTicker">
+    <div class="logo-ticker-track">
+      <!-- 1st Loop -->
+      <div class="logo-ticker-item">TechCrunch</div>
+      <div class="logo-ticker-item">Forbes</div>
+      <div class="logo-ticker-item">Fast Company</div>
+      <div class="logo-ticker-item">Wired</div>
+      <div class="logo-ticker-item">VentureBeat</div>
+      <div class="logo-ticker-item">Bloomberg</div>
+      <!-- 2nd Loop for seamless animation scrolling -->
+      <div class="logo-ticker-item">TechCrunch</div>
+      <div class="logo-ticker-item">Forbes</div>
+      <div class="logo-ticker-item">Fast Company</div>
+      <div class="logo-ticker-item">Wired</div>
+      <div class="logo-ticker-item">VentureBeat</div>
+      <div class="logo-ticker-item">Bloomberg</div>
+    </div>
+  </section>
+
+  <!-- --- WHAT WE DO (SERVICES PILLARS) --- -->
+  <section class="what-we-do section-padding" id="whatWeDo">
+    <div class="container">
+      <div class="reveal" style="text-align: center; margin-bottom: 60px;">
+        <span class="section-label">What We Do</span>
+        <h2>Integrated Digital Growth Solutions</h2>
+        <p class="section-header-desc" style="margin: 16px auto 0 auto;">
+          We operate across four core pillars to align every digital project with measurable business objectives.
+        </p>
+      </div>
+
+      <div class="pillar-table reveal">
+        <!-- Blueprint center-border intersection ticks -->
+        <span class="pillar-table-tick-left"></span>
+        <span class="pillar-table-tick-right"></span>
+        <span class="pillar-table-tick-top"></span>
+        <span class="pillar-table-tick-bottom"></span>
+
+        <!-- Cell 01: Strategy -->
+        <div class="pillar-cell">
+          <span class="cell-num">[01]</span>
+          <h3 class="cell-title">Strategy</h3>
+          <p class="cell-desc">Clear positioning, structured planning, and defined growth direction.</p>
+        </div>
+
+        <!-- Cell 02: Content -->
+        <div class="pillar-cell">
+          <span class="cell-num">[02]</span>
+          <h3 class="cell-title">Content</h3>
+          <p class="cell-desc">High-quality photography, cinematic videos, and impactful creatives.</p>
+        </div>
+
+        <!-- Cell 03: Marketing -->
+        <div class="pillar-cell">
+          <span class="cell-num">[03]</span>
+          <h3 class="cell-title">Marketing</h3>
+          <p class="cell-desc">Platform-focused campaigns that connect with the right audience.</p>
+        </div>
+
+        <!-- Cell 04: Growth -->
+        <div class="pillar-cell">
+          <span class="cell-num">[04]</span>
+          <h3 class="cell-title">Growth</h3>
+          <p class="cell-desc">Data analysis, optimization, and scalable performance systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- FEATURED WORKS (PORTFOLIO PREVIEW) --- -->
+  <section class="featured-works section-padding" id="featuredWorks">
+    <div class="container">
+      <div class="portfolio-header reveal">
+        <div>
+          <span class="section-label">Portfolio</span>
+          <h2>Featured Works</h2>
+        </div>
+        <a href="portfolio.html" class="btn btn-secondary">View All Portfolio</a>
+      </div>
+
+      <div class="portfolio-grid">
+        <div class="portfolio-item reveal-left">
+          <div class="portfolio-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&q=80&w=800" alt="Brand Identity & Design Sketch" class="portfolio-img">
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-category">Brand Strategy</span>
+            <h3 class="portfolio-title">Geometric Identity Refresh</h3>
+          </div>
+        </div>
+
+        <div class="portfolio-item reveal-right">
+          <div class="portfolio-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=800" alt="Content Production Shoot" class="portfolio-img">
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-category">Visual Production</span>
+            <h3 class="portfolio-title">Lifestyle Brand Campaign</h3>
+          </div>
+        </div>
+
+        <div class="portfolio-item reveal-left delay-100">
+          <div class="portfolio-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800" alt="Social Media Creative Shoot" class="portfolio-img">
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-category">Video Production</span>
+            <h3 class="portfolio-title">Cinematic Brand Narrative</h3>
+          </div>
+        </div>
+
+        <div class="portfolio-item reveal-right delay-100">
+          <div class="portfolio-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Performance Advertising Campaign" class="portfolio-img">
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-category">Growth & Ads</span>
+            <h3 class="portfolio-title">Scale-up Conversion Funnel</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- WHAT SETS US APART (OUR STRENGTHS) --- -->
+  <section class="why-choose-us section-padding" id="whyChooseUs">
+    <div class="container">
+      <div class="reveal" style="text-align: center;">
+        <span class="section-label">Our Strengths</span>
+        <h2>What Sets Us Apart</h2>
+        <p class="section-header-desc" style="margin: 16px auto 0 auto;">
+          We focus on long-term brand equity and sustainable growth rather than chasing short-term noise.
+        </p>
+      </div>
+
+      <div class="apart-grid reveal">
+        <div class="apart-cell">
+          <span class="apart-cell-num">01</span>
+          <h4>Fully integrated in-house team</h4>
+          <p>No fragmented outsourcing. Strategy, creation, and advertising operate under one unified plan.</p>
+        </div>
+
+        <div class="apart-cell">
+          <span class="apart-cell-num">02</span>
+          <h4>End-to-end digital execution</h4>
+          <p>From initial market research and strategy development to visual production and campaign launch.</p>
+        </div>
+
+        <div class="apart-cell">
+          <span class="apart-cell-num">03</span>
+          <h4>Structured campaign planning</h4>
+          <p>Carefully planned calendar setups that prevent content gaps and maximize touchpoint consistency.</p>
+        </div>
+
+        <div class="apart-cell">
+          <span class="apart-cell-num">04</span>
+          <h4>Performance-focused strategies</h4>
+          <p>Creative assets and copy built structurally to capture attention and convert audiences efficiently.</p>
+        </div>
+
+        <div class="apart-cell">
+          <span class="apart-cell-num">05</span>
+          <h4>Transparent reporting & KPIs</h4>
+          <p>Clear dashboards showing key brand metrics, conversions, and direct returns on ad spend.</p>
+        </div>
+
+        <div class="apart-cell">
+          <span class="apart-cell-num">06</span>
+          <h4>Creative backed by analytics</h4>
+          <p>We blend editorial-grade design aesthetics with continuous optimization driven by platform data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- WHY CHOOSE DIGI BRANDORA --- -->
+  <section class="why-choose-digi section-padding" id="whyChooseDigi">
+    <div class="container">
+      <div class="strengths-wrapper">
+        <!-- Left: Editorial Statement Card -->
+        <div class="strengths-left reveal">
+          <span class="section-label">Why Us</span>
+          <h2>Why Choose <br><span class="text-accent">Digi Brandora</span></h2>
+          <div class="brandora-statement-card">
+            <div class="statement-blur-glow"></div>
+            <div class="statement-content">
+              <svg class="statement-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 22h20L12 2zm0 4l6.5 13h-13L12 6z" fill="var(--clr-primary)"/>
+              </svg>
+              <p class="statement-quote">
+                "We focus on long-term brand growth, not short-term noise."
+              </p>
+              <div class="statement-line"></div>
+              <p class="statement-footer">Digi Brandora Philosophy</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Feature Deck -->
+        <div class="strengths-right reveal">
+          <div class="strengths-deck">
+            <!-- Item 1 -->
+            <div class="strength-item">
+              <div class="strength-num">01</div>
+              <div class="strength-body">
+                <h4>Fully integrated in-house team</h4>
+                <p>No fragmented outsourcing. Strategy, creation, and advertising operate under one unified plan.</p>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="strength-item">
+              <div class="strength-num">02</div>
+              <div class="strength-body">
+                <h4>End-to-end digital execution</h4>
+                <p>From initial market research and strategy development to visual production and campaign launch.</p>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="strength-item">
+              <div class="strength-num">03</div>
+              <div class="strength-body">
+                <h4>Structured campaign planning</h4>
+                <p>Carefully planned calendar setups that prevent content gaps and maximize touchpoint consistency.</p>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="strength-item">
+              <div class="strength-num">04</div>
+              <div class="strength-body">
+                <h4>Performance-focused strategies</h4>
+                <p>Creative assets and copy built structurally to capture attention and convert audiences efficiently.</p>
+              </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="strength-item">
+              <div class="strength-num">05</div>
+              <div class="strength-body">
+                <h4>Transparent reporting and measurable KPIs</h4>
+                <p>Clear dashboards showing key brand metrics, conversions, and direct returns on ad spend.</p>
+              </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="strength-item">
+              <div class="strength-num">06</div>
+              <div class="strength-body">
+                <h4>Creative excellence backed by analytics</h4>
+                <p>We blend editorial-grade design aesthetics with continuous optimization driven by platform data.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- LATEST INSIGHTS (BLOG) --- -->
+  <section class="latest-insights section-padding" id="latestInsights">
+    <div class="container">
+      <div class="blog-header reveal">
+        <span class="blog-section-label">[08] Blog</span>
+        <div class="blog-header-row">
+          <h2 class="blog-section-title">Latest Insights</h2>
+          <p class="blog-section-desc">A collection of articles sharing our approach to design, strategy, and growth.</p>
+        </div>
+      </div>
+
+      <div class="blog-grid">
+        <!-- Card 1: Featured Card (wide) -->
+        <article class="blog-card featured reveal delay-100">
+          <div class="blog-img-wrapper">
+            <img src="Images/blog-image1.avif" alt="How strategic branding shapes customer perception" class="blog-img">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">Feb 11, 2026 &nbsp;•&nbsp; Brand Identity</div>
+            <h3 class="blog-title">How strategic branding shapes customer perception</h3>
+          </div>
+        </article>
+
+        <!-- Card 2: Regular Card -->
+        <article class="blog-card reveal delay-200">
+          <div class="blog-img-wrapper">
+            <img src="Images/blog-image2.avif" alt="Designing experiences that feel effortlessly human" class="blog-img">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">Jun 9, 2026 &nbsp;•&nbsp; Digital Design</div>
+            <h3 class="blog-title">Designing experiences that feel effortlessly human</h3>
+          </div>
+        </article>
+
+        <!-- Card 3: Regular Card -->
+        <article class="blog-card reveal delay-300">
+          <div class="blog-img-wrapper">
+            <img src="Images/blog-image3.avif" alt="Building websites designed to convert effectively" class="blog-img">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">Jun 19, 2026 &nbsp;•&nbsp; Web Design</div>
+            <h3 class="blog-title">Building websites designed to convert effectively</h3>
+          </div>
+        </article>
+      </div>
+
+      <div class="blog-footer reveal">
+        <a href="about.html" class="btn btn-all-articles">All articles</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- HAPPY CLIENTS (TESTIMONIALS) --- -->
+  <section class="testimonials section-padding dark-theme-section" id="testimonials">
+    <div class="testimonials-glow-overlay"></div>
+    <div class="container">
+      <div class="portfolio-header reveal">
+        <div>
+          <span class="section-label" style="color: var(--clr-accent);">Testimonials</span>
+          <h2>Happy Clients</h2>
+        </div>
+        <div class="testimonial-controls">
+          <button class="slider-btn prev" aria-label="Previous Testimonial">
+            <svg style="width:20px;height:20px;stroke:currentColor;stroke-width:2.5;fill:none;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          </button>
+          <button class="slider-btn next" aria-label="Next Testimonial">
+            <svg style="width:20px;height:20px;stroke:currentColor;stroke-width:2.5;fill:none;" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="testimonial-slider-container reveal">
+        <div class="testimonial-track">
+          
+          <div class="testimonial-card">
+            <p class="testimonial-quote">
+              "Digi Brandora completely revolutionized our online store. Our customer acquisition costs decreased by 34% within three months of strategy deployment."
+            </p>
+            <div class="testimonial-client">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200" alt="Client Sarah Jenkins" class="client-avatar">
+              <div>
+                <h4 class="client-name">Sarah Jenkins</h4>
+                <span class="client-company">Founder, Lumina Skincare</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-quote">
+              "The cinematic content production quality matches luxury brand levels. We finally have digital visuals that stand out in crowded feeds."
+            </p>
+            <div class="testimonial-client">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" alt="Client David Vance" class="client-avatar">
+              <div>
+                <h4 class="client-name">David Vance</h4>
+                <span class="client-company">Marketing Director, Vertex Tech</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-quote">
+              "Having content creators and analytical media buyers working in sync under one roof is a massive game changer. Results are incredibly consistent."
+            </p>
+            <div class="testimonial-client">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200" alt="Client Elena Rostova" class="client-avatar">
+              <div>
+                <h4 class="client-name">Elena Rostova</h4>
+                <span class="client-company">CMO, Novo Fintech</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-quote">
+              "Their transparent metrics reporting kept us fully aligned. Highly recommended digital growth partner for scaling operations."
+            </p>
+            <div class="testimonial-client">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200" alt="Client Marcus Cole" class="client-avatar">
+              <div>
+                <h4 class="client-name">Marcus Cole</h4>
+                <span class="client-company">CEO, Aether Apparel</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- FOOTER --- -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: var(--clr-text-light);">
+            <span class="logo-icon">
+              <img src="Images/logo.avif" alt="Digi Brandôra Logo" class="logo-img-mark">
+            </span></a>
+          <p>
+            An integrated full-service digital agency blending creative excellence with deep platform analytics to drive sustainable brand scaling.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram">IG</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+            <a href="#" class="social-link" aria-label="Facebook">FB</a>
+            <a href="#" class="social-link" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h5>Agency</h5>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="portfolio.html">Featured Works</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html">Privacy Policy</a></li>
+            <li><a href="about.html">Terms of Service</a></li>
+            <li><a href="contact.html">Consultations</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter">
+          <h5>Stay in the Loop</h5>
+          <p>Subscribe to our monthly digest on brand strategy and growth tactics.</p>
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Your work email..." required>
+            <button type="submit" class="newsletter-submit">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Digi Brandora. All rights reserved. Built with precision.</p>
+        <p>Sustainable Growth. Structured Execution.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- --- BOOKING CALENDAR MODAL --- -->
+  <div class="modal-overlay" id="strategyModal">
+    <div class="modal-box">
+      <button class="modal-close-btn">&times;</button>
+      <h3 class="modal-title">Book a Free Strategy Call</h3>
+      <p class="modal-desc">Select a date and preferred slot below. Our strategist will align directly with you.</p>
+      
+      <div class="booking-calendar-wrapper">
+        <div class="form-group">
+          <label for="bookingDate" class="form-label">1. Preferred Date *</label>
+          <input type="date" id="bookingDate" class="form-control" min="2026-05-30">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">2. Preferred Time Slot (IST) *</label>
+          <div class="time-slot-grid">
+            <button class="time-slot-btn">10:00 AM</button>
+            <button class="time-slot-btn">11:30 AM</button>
+            <button class="time-slot-btn">01:00 PM</button>
+            <button class="time-slot-btn">02:30 PM</button>
+            <button class="time-slot-btn">04:00 PM</button>
+            <button class="time-slot-btn">05:30 PM</button>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" id="bookConfirmBtn" style="margin-top: 20px; width: 100%;">Confirm Booking slot</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GSAP & SplitType -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
+  <script src="app.js"></script>
+</body>
+</html>

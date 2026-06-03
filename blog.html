@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore Digi Brandora's insights on brand strategy, digital presence, visual production, and conversion design.">
+  <title>Blog | Digi Brandora</title>
+  <link rel="stylesheet" href="styles.css?v=2.7">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='10' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/><circle cx='10' cy='18' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/><circle cx='22' cy='18' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/></svg>">
+</head>
+<body class="preloading-active">
+  <script>
+    if (sessionStorage.getItem('brandora_preloaded')) {
+      document.body.classList.remove('preloading-active');
+      document.body.classList.add('preloading-done');
+      var sheet = document.createElement('style');
+      sheet.innerHTML = "#sitePreloader { display: none !important; }";
+      document.head.appendChild(sheet);
+    }
+  </script>
+
+  <!-- --- PRELOADER SYSTEM --- -->
+  <div id="sitePreloader" class="preloader-overlay">
+    <div class="preloader-panel panel-left"></div>
+    <div class="preloader-panel panel-right"></div>
+    <div class="preloader-stars"></div>
+    <div class="preloader-content">
+      <div class="preloader-rocket-container" id="preloaderRocketContainer">
+        <svg class="preloader-rocket" id="preloaderRocket" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Rocket Fins -->
+          <path d="M7 13C5 14 3 17 3 19C3 20 4 20.5 5 20C6 19.5 7 17 7 13Z" fill="#00df82" />
+          <path d="M17 13C19 14 21 17 21 19C21 20 20 20.5 19 20C18 19.5 17 17 17 13Z" fill="#00df82" />
+          <!-- Rocket Body -->
+          <path d="M12 2C12 2 17 6 17 13C17 17 14 19 12 21C10 19 7 17 7 13C7 6 12 2 12 2Z" fill="url(#rocketGrad)" />
+          <!-- Rocket Window -->
+          <circle cx="12" cy="9" r="2.5" fill="#0a0f1d" stroke="#00df82" stroke-width="1.5" />
+          <!-- Rocket Thruster flame -->
+          <path class="rocket-flame" d="M12 21C12 21 14 22.5 13 25C12 27 12 27 12 27C12 27 12 27 11 25C10 22.5 12 21 12 21Z" fill="url(#flameGrad)" />
+          <!-- Definitions -->
+          <defs>
+            <linearGradient id="rocketGrad" x1="12" y1="2" x2="12" y2="21" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="100%" stop-color="#025a4f" />
+            </linearGradient>
+            <linearGradient id="flameGrad" x1="12" y1="21" x2="12" y2="27" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ff7b00" />
+              <stop offset="50%" stop-color="#ffae00" />
+              <stop offset="100%" stop-color="#ff0000" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="preloader-launch-smoke"></div>
+      </div>
+      <div class="preloader-brand">
+        <span class="preloader-logo-text">Digi Brandora</span>
+        <div class="preloader-counter-wrapper">
+          <span class="preloader-counter" id="preloaderCounter">00</span><span class="preloader-percent">%</span>
+        </div>
+        <div class="preloader-progress-bar">
+          <div class="preloader-progress-fill" id="preloaderProgressFill"></div>
+        </div>
+        <span class="preloader-status" id="preloaderStatus">INITIATING SYSTEMS...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- BLOG HERO VIEWPORT CONTAINER CARD --- -->
+  <div class="blog-hero-container">
+    <img src="Images/Blog-page/blog-page-hero.avif" alt="Digi Brandora Insights Blog Hero" class="blog-hero-bg">
+
+    <!-- --- HEADER NAVBAR --- -->
+    <header class="header" id="mainHeader">
+      <div class="container">
+        <a href="index.html" class="logo" id="logoLink">
+          <span class="logo-icon">
+            <img src="Images/logo.avif" alt="Digi Brandôra Logo" class="logo-img-mark">
+          </span></a>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="blog.html" class="nav-link active">Blog</a></li>
+          <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="#" class="btn btn-talk" data-open-modal="strategyModal">Let's Talk</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Centered title -->
+    <div class="blog-hero-center">
+      <h1 class="blog-hero-title reveal">Blogs</h1>
+    </div>
+  </div>
+
+  <!-- --- BLOG MAIN CONTENT SECTION --- -->
+  <section class="blog-content-sec">
+    <div class="container">
+      
+      <!-- Top Title Block with Green bar -->
+      <div class="blog-header-block reveal">
+        <span class="blog-meta-top">Brand Identity &bull; May 11, 2026</span>
+        <div class="blog-title-row">
+          <h1 class="blog-main-title">How Strong Branding Creates Lasting Digital Impact</h1>
+          <div class="blog-green-bar"></div>
+        </div>
+      </div>
+
+      <!-- Main Body Content Grid -->
+      <div class="blog-body-grid reveal">
+        
+        <!-- Left: Meta categories stacked -->
+        <div class="blog-sidebar-meta">
+          <div>Brand Identity</div>
+          <div>Digital Presence</div>
+          <div>Customer Trust</div>
+        </div>
+
+        <!-- Right: Paragraph blocks -->
+        <div class="blog-paragraphs">
+          <p>
+            A brand is more than just visuals — it’s the feeling people associate with your business. In today’s digital-first world, strong branding helps businesses build recognition, establish trust, and create meaningful connections with their audience. From the way a logo looks to how content is presented online, every element shapes perception and influences customer decisions.
+          </p>
+          <p>
+            At Digi Brandora, we believe branding should balance strategy with aesthetics. A cohesive identity built through thoughtful design, clear communication, and consistent visual direction creates a stronger and more memorable presence across digital platforms. Whether it’s social media, websites, or marketing campaigns, consistency helps brands feel professional, trustworthy, and recognizable.
+          </p>
+
+          <strong>Why Branding Matters Beyond Design</strong>
+          <p>
+            Strong branding gives businesses clarity and direction. It helps define how a company wants to be perceived and creates a foundation for every marketing effort. A well-crafted identity improves audience recall, builds emotional connection, and helps brands stand out in highly competitive markets.
+          </p>
+          <p>
+            Visual consistency also plays a major role in digital engagement. Carefully selected colors, typography, layouts, and imagery create a seamless experience that reflects the brand’s personality while improving overall communication.
+          </p>
+
+          <strong>Building Brands for Modern Audiences</strong>
+          <p>
+            Modern consumers connect with brands that feel authentic, refined, and visually engaging. Businesses that invest in professional branding are more likely to attract attention, maintain audience trust, and create long-term loyalty.
+          </p>
+          <p>
+            At Digi Brandora, our approach focuses on creating brand experiences that are not only visually appealing but also strategically aligned with business goals. From identity systems and social media design to digital campaigns and visual storytelling, every detail is crafted to strengthen the brand’s overall impact.
+          </p>
+
+          <strong>The Long-Term Value of Branding</strong>
+          <p>
+            Branding is not a one-time process — it’s an evolving system that grows alongside the business. Strong visual identity and consistent communication create a lasting impression that supports long-term growth, customer loyalty, and stronger market positioning.
+          </p>
+          <p>
+            In a fast-moving digital landscape, brands that communicate with clarity, creativity, and consistency are the ones that leave a lasting impact.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Blueprint Divider -->
+      <div class="blueprint-line-x" style="margin: 80px 0;">
+        <span class="blueprint-plus" style="left: 50%; transform: translate(-50%, -50%);"></span>
+      </div>
+
+      <!-- Bottom 3-Card Grid Showcase -->
+      <div class="blog-posts-grid reveal">
+        
+        <!-- Post 1 -->
+        <a href="#" class="blog-post-card">
+          <div class="blog-post-img-frame">
+            <img src="Images/Blog-page/blog-2.avif" alt="How strategic branding shapes customer perception" class="blog-post-img">
+          </div>
+          <div class="blog-post-meta">Jun 11, 2026 &bull; Brand Branding</div>
+          <h4 class="blog-post-title">How strategic branding shapes customer perception</h4>
+        </a>
+
+        <!-- Post 2 -->
+        <a href="#" class="blog-post-card">
+          <div class="blog-post-img-frame">
+            <img src="Images/Blog-page/blog-3.avif" alt="Designing experiences that feel effortlessly human" class="blog-post-img">
+          </div>
+          <div class="blog-post-meta">Jun 9, 2026 &bull; Digital Design</div>
+          <h4 class="blog-post-title">Designing experiences that feel effortlessly human</h4>
+        </a>
+
+        <!-- Post 3 -->
+        <a href="#" class="blog-post-card">
+          <div class="blog-post-img-frame">
+            <img src="Images/Blog-page/blog-4.avif" alt="Building websites designed to convert effectively" class="blog-post-img">
+          </div>
+          <div class="blog-post-meta">Jun 10, 2026 &bull; Web Design</div>
+          <h4 class="blog-post-title">Building websites designed to convert effectively</h4>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- --- FOOTER --- -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: var(--clr-text-light);">
+            <span class="logo-icon">
+              <img src="Images/logo.avif" alt="Digi Brandôra Logo" class="logo-img-mark">
+            </span></a>
+          <p>
+            An integrated full-service digital agency blending creative excellence with deep platform analytics to drive sustainable brand scaling.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram">IG</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+            <a href="#" class="social-link" aria-label="Facebook">FB</a>
+            <a href="#" class="social-link" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h5>Agency</h5>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="portfolio.html">Featured Works</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html">Privacy Policy</a></li>
+            <li><a href="about.html">Terms of Service</a></li>
+            <li><a href="contact.html">Consultations</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter">
+          <h5>Stay in the Loop</h5>
+          <p>Subscribe to our monthly digest on brand strategy and growth tactics.</p>
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Your work email..." required>
+            <button type="submit" class="newsletter-submit">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Digi Brandôra. All rights reserved. Built with precision.</p>
+        <p>Sustainable Growth. Structured Execution.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- --- BOOKING CALENDAR MODAL --- -->
+  <div class="modal-overlay" id="strategyModal">
+    <div class="modal-box">
+      <button class="modal-close-btn">&times;</button>
+      <h3 class="modal-title">Book a Free Strategy Call</h3>
+      <p class="modal-desc">Select a date and preferred slot below. Our strategist will align directly with you.</p>
+      
+      <div class="booking-calendar-wrapper">
+        <div class="form-group">
+          <label for="bookingDate" class="form-label">1. Preferred Date *</label>
+          <input type="date" id="bookingDate" class="form-control" min="2026-05-30">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">2. Preferred Time Slot (IST) *</label>
+          <div class="time-slot-grid">
+            <button class="time-slot-btn">10:00 AM</button>
+            <button class="time-slot-btn">11:30 AM</button>
+            <button class="time-slot-btn">01:00 PM</button>
+            <button class="time-slot-btn">02:30 PM</button>
+            <button class="time-slot-btn">04:00 PM</button>
+            <button class="time-slot-btn">05:30 PM</button>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" id="bookConfirmBtn" style="margin-top: 20px; width: 100%;">Confirm Booking slot</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GSAP & SplitType -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
+  <script src="app.js"></script>
+</body>
+</html>

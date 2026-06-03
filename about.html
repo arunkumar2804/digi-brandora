@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about Digi Brandora's origin story, our vision, and mission to deliver structured digital growth solutions for modern brands.">
+  <title>About Us | Digi Brandora</title>
+  <link rel="stylesheet" href="styles.css?v=2.7">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='10' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/><circle cx='10' cy='18' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/><circle cx='22' cy='18' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/></svg>">
+</head>
+<body class="about-editorial-page preloading-active">
+  <script>
+    if (sessionStorage.getItem('brandora_preloaded')) {
+      document.body.classList.remove('preloading-active');
+      document.body.classList.add('preloading-done');
+      var sheet = document.createElement('style');
+      sheet.innerHTML = "#sitePreloader { display: none !important; }";
+      document.head.appendChild(sheet);
+    }
+  </script>
+
+  <!-- --- PRELOADER SYSTEM --- -->
+  <div id="sitePreloader" class="preloader-overlay">
+    <div class="preloader-panel panel-left"></div>
+    <div class="preloader-panel panel-right"></div>
+    <div class="preloader-stars"></div>
+    <div class="preloader-content">
+      <div class="preloader-rocket-container" id="preloaderRocketContainer">
+        <svg class="preloader-rocket" id="preloaderRocket" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Rocket Fins -->
+          <path d="M7 13C5 14 3 17 3 19C3 20 4 20.5 5 20C6 19.5 7 17 7 13Z" fill="#00df82" />
+          <path d="M17 13C19 14 21 17 21 19C21 20 20 20.5 19 20C18 19.5 17 17 17 13Z" fill="#00df82" />
+          <!-- Rocket Body -->
+          <path d="M12 2C12 2 17 6 17 13C17 17 14 19 12 21C10 19 7 17 7 13C7 6 12 2 12 2Z" fill="url(#rocketGrad)" />
+          <!-- Rocket Window -->
+          <circle cx="12" cy="9" r="2.5" fill="#0a0f1d" stroke="#00df82" stroke-width="1.5" />
+          <!-- Rocket Thruster flame -->
+          <path class="rocket-flame" d="M12 21C12 21 14 22.5 13 25C12 27 12 27 12 27C12 27 12 27 11 25C10 22.5 12 21 12 21Z" fill="url(#flameGrad)" />
+          <!-- Definitions -->
+          <defs>
+            <linearGradient id="rocketGrad" x1="12" y1="2" x2="12" y2="21" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="100%" stop-color="#025a4f" />
+            </linearGradient>
+            <linearGradient id="flameGrad" x1="12" y1="21" x2="12" y2="27" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ff7b00" />
+              <stop offset="50%" stop-color="#ffae00" />
+              <stop offset="100%" stop-color="#ff0000" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="preloader-launch-smoke"></div>
+      </div>
+      <div class="preloader-brand">
+        <span class="preloader-logo-text">Digi Brandora</span>
+        <div class="preloader-counter-wrapper">
+          <span class="preloader-counter" id="preloaderCounter">00</span><span class="preloader-percent">%</span>
+        </div>
+        <div class="preloader-progress-bar">
+          <div class="preloader-progress-fill" id="preloaderProgressFill"></div>
+        </div>
+        <span class="preloader-status" id="preloaderStatus">INITIATING SYSTEMS...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- HERO VIEWPORT CONTAINER CARD --- -->
+  <div class="about-hero-container">
+    <img src="Images/about-us-hero.avif" alt="Digi Brandora Story Hero" class="about-hero-bg">
+
+    <!-- --- HEADER NAVBAR --- -->
+    <header class="header" id="mainHeader">
+      <div class="container">
+        <a href="index.html" class="logo" id="logoLink">
+          <span class="logo-icon">
+            <img src="Images/logo.avif" alt="Digi Brandôra Logo" class="logo-img-mark">
+          </span></a>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link active">About Us</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="#" class="btn btn-talk" data-open-modal="strategyModal">Let's Talk</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="about-hero-center">
+      <h1 class="about-hero-title reveal">Our Story</h1>
+    </div>
+  </div>
+
+  <!-- --- CORE EDITORIAL SECTION --- -->
+  <section class="about-content-sec">
+    <div class="container">
+      
+      <!-- Intro Grid Section -->
+      <div class="about-intro-grid reveal">
+        <div class="about-label">About us</div>
+        <div class="about-intro-text-block">
+          <p class="about-intro-desc">
+            Digi Brandora was founded with a simple belief — brands deserve strategic digital growth, not random marketing.
+          </p>
+          <p class="about-intro-desc">
+            In a digital world overloaded with content, what truly stands out is clarity, consistency, and quality execution.
+          </p>
+          <p class="about-intro-desc">
+            We noticed that many businesses struggle because their marketing lacks direction. Some have content without strategy. Others run ads without strong branding. Many invest in marketing without tracking performance properly.
+          </p>
+          <p class="about-intro-desc">
+            Digi Brandora bridges that gap.
+          </p>
+        </div>
+      </div>
+
+      <!-- "We combine" Section with solid green block -->
+      <div class="we-combine-container reveal">
+        <h2 class="we-combine-title">We combine</h2>
+        <div class="we-combine-bar"></div>
+      </div>
+
+      <!-- 2-Column Pillars Grid -->
+      <div class="about-pillars-grid reveal">
+        <div class="about-pillar-item">Brand Strategy</div>
+        <div class="about-pillar-item">Social Media Management</div>
+        <div class="about-pillar-item">Content Production</div>
+        <div class="about-pillar-item">Performance Marketing</div>
+        <div class="about-pillar-item">Conversion Optimization</div>
+      </div>
+
+      <!-- Outro Paragraph -->
+      <p class="about-outro-text reveal">
+        Our approach is collaborative and insight-driven. We work closely with brands to understand their vision and translate it into impactful digital communication.
+      </p>
+
+      <!-- Blueprint Divider -->
+      <div class="blueprint-line-x" style="margin: 80px 0;">
+        <span class="blueprint-plus" style="left: 50%; transform: translate(-50%, -50%);"></span>
+      </div>
+
+      <!-- --- VISION & MISSION SECTION --- -->
+      <div class="about-additions-sec reveal">
+        <!-- Centered Main Quote -->
+        <h2 class="about-additions-quote">
+          We don’t chase trends blindly.<br>We build systems that generate results.
+        </h2>
+
+        <!-- Divider with centered plus -->
+        <div class="blueprint-line-x" style="margin: 80px 0;">
+          <span class="blueprint-plus" style="left: 50%; transform: translate(-50%, -50%);"></span>
+        </div>
+
+        <!-- Our Vision -->
+        <div class="about-vision-sec">
+          <h3 class="about-vision-title">Our Vision</h3>
+          <p class="about-vision-desc">
+            To become a trusted digital growth partner for brands looking to scale with clarity and confidence
+          </p>
+        </div>
+
+        <!-- Centerpiece iPad man visual -->
+        <div class="about-center-visual">
+          <img src="Images/about-hero-figma.png" alt="Digi Brandora Core Vision Centerpiece" class="about-center-img">
+        </div>
+
+        <!-- Our Mission -->
+        <div class="about-mission-sec" style="margin-bottom: 40px;">
+          <h3 class="about-mission-title">Our Mission</h3>
+          <p class="about-mission-desc">
+            To become a trusted digital growth partner for brands looking to scale with clarity and confidence
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- --- FOOTER --- -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: var(--clr-text-light);">
+            <span class="logo-icon">
+              <img src="Images/logo.avif" alt="Digi Brandôra Logo" class="logo-img-mark">
+            </span></a>
+          <p>
+            An integrated full-service digital agency blending creative excellence with deep platform analytics to drive sustainable brand scaling.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram">IG</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+            <a href="#" class="social-link" aria-label="Facebook">FB</a>
+            <a href="#" class="social-link" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h5>Agency</h5>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="portfolio.html">Featured Works</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html">Privacy Policy</a></li>
+            <li><a href="about.html">Terms of Service</a></li>
+            <li><a href="contact.html">Consultations</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter">
+          <h5>Stay in the Loop</h5>
+          <p>Subscribe to our monthly digest on brand strategy and growth tactics.</p>
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Your work email..." required>
+            <button type="submit" class="newsletter-submit">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Digi Brandôra. All rights reserved. Built with precision.</p>
+        <p>Sustainable Growth. Structured Execution.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- --- BOOKING CALENDAR MODAL --- -->
+  <div class="modal-overlay" id="strategyModal">
+    <div class="modal-box">
+      <button class="modal-close-btn">&times;</button>
+      <h3 class="modal-title">Book a Free Strategy Call</h3>
+      <p class="modal-desc">Select a date and preferred slot below. Our strategist will align directly with you.</p>
+      
+      <div class="booking-calendar-wrapper">
+        <div class="form-group">
+          <label for="bookingDate" class="form-label">1. Preferred Date *</label>
+          <input type="date" id="bookingDate" class="form-control" min="2026-05-30">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">2. Preferred Time Slot (IST) *</label>
+          <div class="time-slot-grid">
+            <button class="time-slot-btn">10:00 AM</button>
+            <button class="time-slot-btn">11:30 AM</button>
+            <button class="time-slot-btn">01:00 PM</button>
+            <button class="time-slot-btn">02:30 PM</button>
+            <button class="time-slot-btn">04:00 PM</button>
+            <button class="time-slot-btn">05:30 PM</button>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" id="bookConfirmBtn" style="margin-top: 20px; width: 100%;">Confirm Booking slot</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GSAP & SplitType -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
+  <script src="app.js"></script>
+</body>
+</html>

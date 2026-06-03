@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover our full suite of integrated digital services, including brand strategy, photography, video production, social media, ads, and website conversions.">
+  <title>Services | Digi Brandora</title>
+  <link rel="stylesheet" href="styles.css?v=2.0">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='10' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/><circle cx='10' cy='18' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/><circle cx='22' cy='18' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/></svg>">
+</head>
+<body class="preloading-active">
+  <script>
+    if (sessionStorage.getItem('brandora_preloaded')) {
+      document.body.classList.remove('preloading-active');
+      document.body.classList.add('preloading-done');
+      var sheet = document.createElement('style');
+      sheet.innerHTML = "#sitePreloader { display: none !important; }";
+      document.head.appendChild(sheet);
+    }
+  </script>
+
+  <!-- --- PRELOADER SYSTEM --- -->
+  <div id="sitePreloader" class="preloader-overlay">
+    <div class="preloader-panel panel-left"></div>
+    <div class="preloader-panel panel-right"></div>
+    <div class="preloader-stars"></div>
+    <div class="preloader-content">
+      <div class="preloader-rocket-container" id="preloaderRocketContainer">
+        <svg class="preloader-rocket" id="preloaderRocket" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Rocket Fins -->
+          <path d="M7 13C5 14 3 17 3 19C3 20 4 20.5 5 20C6 19.5 7 17 7 13Z" fill="#00df82" />
+          <path d="M17 13C19 14 21 17 21 19C21 20 20 20.5 19 20C18 19.5 17 17 17 13Z" fill="#00df82" />
+          <!-- Rocket Body -->
+          <path d="M12 2C12 2 17 6 17 13C17 17 14 19 12 21C10 19 7 17 7 13C7 6 12 2 12 2Z" fill="url(#rocketGrad)" />
+          <!-- Rocket Window -->
+          <circle cx="12" cy="9" r="2.5" fill="#0a0f1d" stroke="#00df82" stroke-width="1.5" />
+          <!-- Rocket Thruster flame -->
+          <path class="rocket-flame" d="M12 21C12 21 14 22.5 13 25C12 27 12 27 12 27C12 27 12 27 11 25C10 22.5 12 21 12 21Z" fill="url(#flameGrad)" />
+          <!-- Definitions -->
+          <defs>
+            <linearGradient id="rocketGrad" x1="12" y1="2" x2="12" y2="21" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="100%" stop-color="#025a4f" />
+            </linearGradient>
+            <linearGradient id="flameGrad" x1="12" y1="21" x2="12" y2="27" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ff7b00" />
+              <stop offset="50%" stop-color="#ffae00" />
+              <stop offset="100%" stop-color="#ff0000" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="preloader-launch-smoke"></div>
+      </div>
+      <div class="preloader-brand">
+        <span class="preloader-logo-text">Digi Brandora</span>
+        <div class="preloader-counter-wrapper">
+          <span class="preloader-counter" id="preloaderCounter">00</span><span class="preloader-percent">%</span>
+        </div>
+        <div class="preloader-progress-bar">
+          <div class="preloader-progress-fill" id="preloaderProgressFill"></div>
+        </div>
+        <span class="preloader-status" id="preloaderStatus">INITIATING SYSTEMS...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- HEADER NAVBAR --- -->
+  <header class="header scrolled" id="mainHeader">
+    <div class="container">
+      <a href="index.html" class="logo" id="logoLink">
+        <span class="logo-icon">
+          <img src="Images/logo.avif" alt="Digi Brandôra Logo" class="logo-img-mark">
+        </span></a>
+      
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="services.html" class="nav-link active">Services</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li><a href="#" class="btn btn-talk" data-open-modal="strategyModal">Let's Talk</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- --- PAGE BANNER --- -->
+  <section class="page-banner">
+    <div class="page-banner-glow"></div>
+    <div class="container">
+      <div class="page-banner-content">
+        <span class="hero-sub" style="animation: none;">What We Offer</span>
+        <h1>Integrated Growth Services</h1>
+        <p>Aligning high-quality aesthetics with raw data performance to scale modern brands.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- SERVICES TABS SECTION --- -->
+  <section class="services-details-section section-padding">
+    <div class="container">
+      
+      <!-- Interactive Navigation Tabs -->
+      <div class="tabs-nav reveal">
+        <button class="tab-btn active" data-tab="tab-strategy">Strategy</button>
+        <button class="tab-btn" data-tab="tab-photography">Photography</button>
+        <button class="tab-btn" data-tab="tab-video">Video Production</button>
+        <button class="tab-btn" data-tab="tab-social">Social Media</button>
+        <button class="tab-btn" data-tab="tab-performance">Performance Ads</button>
+        <button class="tab-btn" data-tab="tab-web">Web Presence</button>
+      </div>
+
+      <!-- Tab Panes Content -->
+      <div class="tabs-content">
+        
+        <!-- Pillar 1: Strategy -->
+        <div class="tab-pane active" id="tab-strategy">
+          <div class="grid-2">
+            <div class="reveal-left" style="display: flex; flex-direction: column; justify-content: center;">
+              <span class="section-label">Pillar 01 / Direction</span>
+              <h2>Strategy & Brand Development</h2>
+              <p class="section-header-desc" style="color: var(--clr-primary); font-weight: 600; margin-bottom: 24px;">
+                Strong brands are built on deep clarity.
+              </p>
+              <p style="color: var(--clr-text-muted-dark); margin-bottom: 30px;">
+                We ensure every piece of communication aligns with your brand’s long-term goals. From dissecting market share opportunities to structuring annual campaign timelines, we provide the execution roadmap.
+              </p>
+              <a href="contact.html" class="btn btn-primary" style="align-self: flex-start;">Get Started</a>
+            </div>
+            
+            <div class="reveal-right delay-200">
+              <div style="background-color: var(--clr-bg-slate); border: 1px solid var(--clr-border-light); border-radius: 16px; padding: 40px;">
+                <h3 style="margin-bottom: 24px; color: var(--clr-primary-dark);">What's Included:</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Brand positioning & identity direction
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Target audience mapping & user personas
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Competitor analysis & SWOT modeling
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Omnichannel campaign framework planning
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Monthly content calendar strategy
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Product & service launch strategy
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 2: Photography -->
+        <div class="tab-pane" id="tab-photography">
+          <div class="grid-2">
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+              <span class="section-label">Pillar 02 / Visuals</span>
+              <h2>Photography & Visual Production</h2>
+              <p class="section-header-desc" style="color: var(--clr-primary); font-weight: 600; margin-bottom: 24px;">
+                Perception is shaped by premium visuals.
+              </p>
+              <p style="color: var(--clr-text-muted-dark); margin-bottom: 30px;">
+                Our high-end visual production is designed not only for luxury aesthetics but also directly engineered for digital marketing performance, capturing attention within microseconds.
+              </p>
+              <a href="contact.html" class="btn btn-primary" style="align-self: flex-start;">Get Started</a>
+            </div>
+            
+            <div>
+              <div style="background-color: var(--clr-bg-slate); border: 1px solid var(--clr-border-light); border-radius: 16px; padding: 40px;">
+                <h3 style="margin-bottom: 24px; color: var(--clr-primary-dark);">What's Included:</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    High-end product photography
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Lifestyle & brand narrative shoots
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    E-commerce catalog & asset production
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Creative studio concept shoots
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Professional editing & retouching suites
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 3: Video -->
+        <div class="tab-pane" id="tab-video">
+          <div class="grid-2">
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+              <span class="section-label">Pillar 03 / Cinema</span>
+              <h2>Video Production</h2>
+              <p class="section-header-desc" style="color: var(--clr-primary); font-weight: 600; margin-bottom: 24px;">
+                Video content builds deeper audience connection.
+              </p>
+              <p style="color: var(--clr-text-muted-dark); margin-bottom: 30px;">
+                From pre-production strategy and scripting to post-production sound design and visual grading, we handle everything with a strategic layout optimized for native social feeds.
+              </p>
+              <a href="contact.html" class="btn btn-primary" style="align-self: flex-start;">Get Started</a>
+            </div>
+            
+            <div>
+              <div style="background-color: var(--clr-bg-slate); border: 1px solid var(--clr-border-light); border-radius: 16px; padding: 40px;">
+                <h3 style="margin-bottom: 24px; color: var(--clr-primary-dark);">What's Included:</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Cinematic Brand Films
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    High-impact promotional videos
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Mobile-optimized short-form reels & TikToks
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Social media ad creative variants
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Corporate overview & profile videos
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Professional script development & editing
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 4: Social Media -->
+        <div class="tab-pane" id="tab-social">
+          <div class="grid-2">
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+              <span class="section-label">Pillar 04 / Engagement</span>
+              <h2>Social Media Marketing</h2>
+              <p class="section-header-desc" style="color: var(--clr-primary); font-weight: 600; margin-bottom: 24px;">
+                Social media is more than posting — it’s brand equity.
+              </p>
+              <p style="color: var(--clr-text-muted-dark); margin-bottom: 30px;">
+                We focus on consistent metric growth, organic algorithm hacking, community building, and active audience engagement instead of silent grid spaces.
+              </p>
+              <a href="contact.html" class="btn btn-primary" style="align-self: flex-start;">Get Started</a>
+            </div>
+            
+            <div>
+              <div style="background-color: var(--clr-bg-slate); border: 1px solid var(--clr-border-light); border-radius: 16px; padding: 40px;">
+                <h3 style="margin-bottom: 24px; color: var(--clr-primary-dark);">What's Included:</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Content creation, publishing, and scheduling
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Instagram, Facebook & LinkedIn management
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Community engagement & comment moderation
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Custom copywriting & optimized hashtag strategies
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Monthly content calendar planning
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Granular platform analytics & monthly reporting
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 5: Performance Ads -->
+        <div class="tab-pane" id="tab-performance">
+          <div class="grid-2">
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+              <span class="section-label">Pillar 05 / Ads</span>
+              <h2>Performance Marketing & Digital Advertising</h2>
+              <p class="section-header-desc" style="color: var(--clr-primary); font-weight: 600; margin-bottom: 24px;">
+                Growth requires precision.
+              </p>
+              <p style="color: var(--clr-text-muted-dark); margin-bottom: 30px;">
+                Every campaign is designed to deliver measurable ROI. We configure high-conversion funnels, launch optimized platform ads, and scale retargeting structures with surgical precision.
+              </p>
+              <a href="contact.html" class="btn btn-primary" style="align-self: flex-start;">Get Started</a>
+            </div>
+            
+            <div>
+              <div style="background-color: var(--clr-bg-slate); border: 1px solid var(--clr-border-light); border-radius: 16px; padding: 40px;">
+                <h3 style="margin-bottom: 24px; color: var(--clr-primary-dark);">What's Included:</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Meta Ads (Facebook & Instagram campaigns)
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Google Search, Shopping & Display Ads
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Structured lead generation campaigns
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Conversion-focused e-commerce funnels
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Multi-tier retargeting & lookalike setups
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Continuous performance analysis & asset testing
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 6: Web Presence -->
+        <div class="tab-pane" id="tab-web">
+          <div class="grid-2">
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+              <span class="section-label">Pillar 06 / Foundation</span>
+              <h2>Website & Digital Presence</h2>
+              <p class="section-header-desc" style="color: var(--clr-primary); font-weight: 600; margin-bottom: 24px;">
+                Your website is your digital foundation.
+              </p>
+              <p style="color: var(--clr-text-muted-dark); margin-bottom: 30px;">
+                We ensure your website directly supports your marketing objectives. We optimize layouts for fast speed, configure user funnels, write highly persuasive copy, and implement clean SEO patterns.
+              </p>
+              <a href="contact.html" class="btn btn-primary" style="align-self: flex-start;">Get Started</a>
+            </div>
+            
+            <div>
+              <div style="background-color: var(--clr-bg-slate); border: 1px solid var(--clr-border-light); border-radius: 16px; padding: 40px;">
+                <h3 style="margin-bottom: 24px; color: var(--clr-primary-dark);">What's Included:</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Website content architecture & planning
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Landing page conversion optimization
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Persuasive conversion-focused copywriting
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Interactive funnel structure mapping
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; font-weight: 500;">
+                    <svg style="width:20px;height:20px;stroke:var(--clr-accent);stroke-width:3;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    SEO-friendly tag structure & speed planning
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- --- CTA SECTION --- -->
+  <section class="services-cta section-padding dark-theme-section" style="position:relative; overflow:hidden; text-align:center;">
+    <div class="testimonials-glow-overlay"></div>
+    <div class="container" style="position:relative; z-index:1;">
+      <div class="reveal" style="max-width: 700px; margin: 0 auto;">
+        <span class="section-label" style="color:var(--clr-accent);">Scale Today</span>
+        <h2 style="margin-bottom: 20px;">Ready to Elevate Your Brand Presence?</h2>
+        <p style="color: var(--clr-text-muted-light); margin-bottom: 35px; font-size: 1.15rem;">
+          Schedule your discovery strategy consultation with our analytical creative directors and outline a structured roadmap to market authority.
+        </p>
+        <a href="#" class="btn btn-primary" data-open-modal="strategyModal">Book Your Free Strategy Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- FOOTER --- -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: var(--clr-text-light);">
+            <span class="logo-icon">
+              <img src="Images/logo.avif" alt="Digi Brandôra Logo" class="logo-img-mark">
+            </span></a>
+          <p>
+            An integrated full-service digital agency blending creative excellence with deep platform analytics to drive sustainable brand scaling.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram">IG</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+            <a href="#" class="social-link" aria-label="Facebook">FB</a>
+            <a href="#" class="social-link" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h5>Agency</h5>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="portfolio.html">Featured Works</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html">Privacy Policy</a></li>
+            <li><a href="about.html">Terms of Service</a></li>
+            <li><a href="contact.html">Consultations</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter">
+          <h5>Stay in the Loop</h5>
+          <p>Subscribe to our monthly digest on brand strategy and growth tactics.</p>
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Your work email..." required>
+            <button type="submit" class="newsletter-submit">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Digi Brandôra. All rights reserved. Built with precision.</p>
+        <p>Sustainable Growth. Structured Execution.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- --- BOOKING CALENDAR MODAL --- -->
+  <div class="modal-overlay" id="strategyModal">
+    <div class="modal-box">
+      <button class="modal-close-btn">&times;</button>
+      <h3 class="modal-title">Book a Free Strategy Call</h3>
+      <p class="modal-desc">Select a date and preferred slot below. Our strategist will align directly with you.</p>
+      
+      <div class="booking-calendar-wrapper">
+        <div class="form-group">
+          <label for="bookingDate" class="form-label">1. Preferred Date *</label>
+          <input type="date" id="bookingDate" class="form-control" min="2026-05-30">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">2. Preferred Time Slot (IST) *</label>
+          <div class="time-slot-grid">
+            <button class="time-slot-btn">10:00 AM</button>
+            <button class="time-slot-btn">11:30 AM</button>
+            <button class="time-slot-btn">01:00 PM</button>
+            <button class="time-slot-btn">02:30 PM</button>
+            <button class="time-slot-btn">04:00 PM</button>
+            <button class="time-slot-btn">05:30 PM</button>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" id="bookConfirmBtn" style="margin-top: 20px; width: 100%;">Confirm Booking slot</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GSAP & SplitType -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
+  <script src="app.js"></script>
+</body>
+</html>
