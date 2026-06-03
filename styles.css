@@ -3895,3 +3895,15 @@ body.hand-tracking-active textarea,
 body.hand-tracking-active .magnetic {
   cursor: none !important;
 }
+
+/* Gesture Loading Indicator */
+body.gesture-loading .cursor-outline {
+  border-width: 4px;
+  border-style: dashed;
+  animation: gesture-spin 1.5s linear forwards;
+}
+
+@keyframes gesture-spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg) scale(1.5); border-color: rgba(0, 223, 130, 0.2); }
+  100% { transform: translate(-50%, -50%) rotate(360deg) scale(0.8); border-color: rgba(0, 223, 130, 1); }
+}

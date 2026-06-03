@@ -718,6 +718,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
+    let smoothedX = window.innerWidth / 2;
+    let smoothedY = window.innerHeight / 2;
+    let activeGesture = null;
+    let gestureStartTime = 0;
+    let lastTwoFingerY = 0;
+
     // Predict WebCam loop
     const predictWebcam = async () => {
       if (!webcamRunning) return;
@@ -728,53 +734,116 @@ document.addEventListener('DOMContentLoaded', () => {
         const results = gestureRecognizer.recognizeForVideo(video, performance.now());
         
         if (results.landmarks && results.landmarks.length > 0) {
+          const landmarks = results.landmarks[0];
           // Get the index finger tip (landmark 8)
-          const indexFingerTip = results.landmarks[0][8];
+          const indexFingerTip = landmarks[8];
           
-          // Map coordinates to screen
-          // Webcam is usually mirrored, so we invert X.
-          const x = (1 - indexFingerTip.x) * window.innerWidth;
-          const y = indexFingerTip.y * window.innerHeight;
+          // Map coordinates to screen (inverted X for mirror)
+          const rawX = (1 - indexFingerTip.x) * window.innerWidth;
+          const rawY = indexFingerTip.y * window.innerHeight;
+
+          // LERP smoothing to eliminate shaking
+          smoothedX += (rawX - smoothedX) * 0.25;
+          smoothedY += (rawY - smoothedY) * 0.25;
 
           // We must dispatch the synthetic mousemove on the element under the finger 
-          // so hover effects and GSAP logic trigger naturally.
-          const elementUnderFinger = document.elementFromPoint(x, y) || document.body;
+          const elementUnderFinger = document.elementFromPoint(smoothedX, smoothedY) || document.body;
           
           const moveEvent = new MouseEvent('mousemove', {
             view: window,
             bubbles: true,
             cancelable: true,
-            clientX: x,
-            clientY: y
+            clientX: smoothedX,
+            clientY: smoothedY
           });
           elementUnderFinger.dispatchEvent(moveEvent);
 
-          // Check for clicks (Closed_Fist)
-          if (results.gestures.length > 0 && results.gestures[0].length > 0) {
-            const gestureCategory = results.gestures[0][0].categoryName;
+          // Custom Finger Counting (comparing TIP y to PIP y)
+          let raisedFingers = 0;
+          if (landmarks[8].y < landmarks[6].y) raisedFingers++;
+          if (landmarks[12].y < landmarks[10].y) raisedFingers++;
+          if (landmarks[16].y < landmarks[14].y) raisedFingers++;
+          if (landmarks[20].y < landmarks[18].y) raisedFingers++;
+
+          const gestureCategory = results.gestures.length > 0 && results.gestures[0].length > 0 ? results.gestures[0][0].categoryName : "None";
+          let currentGesture = "None";
+
+          if (gestureCategory === "Closed_Fist" || (raisedFingers === 0 && gestureCategory !== "Thumb_Up")) {
+            currentGesture = "Fist";
+          } else if (gestureCategory === "Thumb_Up") {
+            currentGesture = "Thumbs_Up";
+          } else if (raisedFingers === 2) {
+            currentGesture = "Two_Fingers";
+          } else if (raisedFingers === 3) {
+            currentGesture = "Three_Fingers";
+          } else if (raisedFingers === 4) {
+            currentGesture = "Four_Fingers";
+          } else if (raisedFingers >= 5 || gestureCategory === "Open_Palm") {
+            currentGesture = "Five_Fingers";
+          }
+
+          // Handle Scrolling (Swipe Two Fingers)
+          if (currentGesture === "Two_Fingers") {
+             const deltaY = smoothedY - lastTwoFingerY;
+             if (Math.abs(deltaY) > 1.5) { // Threshold to prevent micro-scrolls
+                 // Inverted scroll direction: moving hand up (negative deltaY) scrolls page down
+                 window.scrollBy({ top: -deltaY * 2.5, behavior: 'auto' });
+                 // Reset gesture timer so scrolling doesn't trigger About Us navigation
+                 gestureStartTime = performance.now(); 
+             }
+             lastTwoFingerY = smoothedY;
+          } else {
+             lastTwoFingerY = smoothedY;
+          }
+
+          // Check for clicks (Fist)
+          if (currentGesture === "Fist" && !isCooldown) {
+            isCooldown = true;
             
-            if (gestureCategory === "Closed_Fist" && !isCooldown) {
-              isCooldown = true;
-              
-              // Add a click effect to the cursor (scale down quickly)
-              const cursorOutline = document.querySelector('.cursor-outline');
-              if (cursorOutline) {
-                gsap.to(cursorOutline, {scale: 0.5, duration: 0.1, yoyo: true, repeat: 1});
-              }
-
-              // Simulate click
-              const clickEvent = new MouseEvent('click', {
-                view: window,
-                bubbles: true,
-                cancelable: true,
-                clientX: x,
-                clientY: y
-              });
-              elementUnderFinger.dispatchEvent(clickEvent);
-
-              // Cooldown to prevent multiple clicks per second
-              setTimeout(() => { isCooldown = false; }, 1000);
+            // Add a click effect to the cursor
+            const cursorOutline = document.querySelector('.cursor-outline');
+            if (cursorOutline) {
+              gsap.to(cursorOutline, {scale: 0.5, duration: 0.1, yoyo: true, repeat: 1});
             }
+
+            // Bulletproof native click logic
+            const clickable = elementUnderFinger.closest('a, button');
+            if (clickable) {
+              if (clickable.tagName.toLowerCase() === 'a') {
+                window.location.href = clickable.href;
+              } else {
+                clickable.click();
+              }
+            } else {
+              // Fallback for custom elements
+              elementUnderFinger.dispatchEvent(new MouseEvent('click', { view: window, bubbles: true, cancelable: true, clientX: smoothedX, clientY: smoothedY }));
+            }
+
+            setTimeout(() => { isCooldown = false; }, 1000);
+          }
+
+          // Handle Navigation Gestures (Hold to Navigate)
+          const navGestures = ["Two_Fingers", "Three_Fingers", "Four_Fingers", "Five_Fingers", "Thumbs_Up"];
+          if (navGestures.includes(currentGesture)) {
+              if (activeGesture !== currentGesture) {
+                  activeGesture = currentGesture;
+                  gestureStartTime = performance.now();
+                  document.body.classList.add('gesture-loading');
+              } else {
+                  const holdDuration = performance.now() - gestureStartTime;
+                  if (holdDuration > 1500 && !isCooldown) {
+                      isCooldown = true;
+                      document.body.classList.remove('gesture-loading');
+                      if (currentGesture === "Two_Fingers") window.location.href = "about.html";
+                      if (currentGesture === "Three_Fingers") window.location.href = "services.html";
+                      if (currentGesture === "Four_Fingers") window.location.href = "blog.html";
+                      if (currentGesture === "Five_Fingers") window.location.href = "portfolio.html";
+                      if (currentGesture === "Thumbs_Up") window.location.href = "contact.html";
+                  }
+              }
+          } else {
+              activeGesture = null;
+              document.body.classList.remove('gesture-loading');
           }
         }
       }
