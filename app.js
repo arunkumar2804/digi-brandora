@@ -694,11 +694,9 @@ document.addEventListener('DOMContentLoaded', () => {
         statusText.textContent = "Loading...";
         statusText.classList.add('loading');
         
-        // MediaPipe Tasks Vision globals
-        const { GestureRecognizer, FilesetResolver } = window;
-        if (!GestureRecognizer || !FilesetResolver) {
-          throw new Error("MediaPipe libraries not found on window object.");
-        }
+        // MediaPipe Tasks Vision dynamic import
+        const visionModule = await import("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/vision_bundle.mjs");
+        const { GestureRecognizer, FilesetResolver } = visionModule;
 
         const vision = await FilesetResolver.forVisionTasks(
           "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/wasm"
