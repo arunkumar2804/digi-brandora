@@ -784,16 +784,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // Handle Scrolling (Swipe Two Fingers)
           if (currentGesture === "Two_Fingers") {
-             const deltaY = smoothedY - lastTwoFingerY;
-             if (Math.abs(deltaY) > 1.5) { // Threshold to prevent micro-scrolls
-                 // Inverted scroll direction: moving hand up (negative deltaY) scrolls page down
-                 window.scrollBy({ top: -deltaY * 2.5, behavior: 'auto' });
+             const deltaY = rawY - lastTwoFingerY;
+             if (Math.abs(deltaY) > 2) { // Immediate scroll response
+                 // Inverted scroll direction for natural feel
+                 window.scrollBy({ top: -deltaY * 2.5, behavior: 'instant' });
                  // Reset gesture timer so scrolling doesn't trigger About Us navigation
                  gestureStartTime = performance.now(); 
              }
-             lastTwoFingerY = smoothedY;
+             lastTwoFingerY = rawY;
           } else {
-             lastTwoFingerY = smoothedY;
+             lastTwoFingerY = rawY;
           }
 
           // Check for clicks (Fist)
@@ -872,6 +872,7 @@ document.addEventListener('DOMContentLoaded', () => {
             statusText.textContent = "Active";
             statusText.classList.remove('loading');
             document.body.classList.add('hand-tracking-active');
+            sessionStorage.setItem('handTrackingEnabled', 'true');
             predictWebcam();
           });
         } catch (err) {
@@ -885,12 +886,18 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.classList.remove('active');
         statusText.textContent = "Off";
         document.body.classList.remove('hand-tracking-active');
+        sessionStorage.setItem('handTrackingEnabled', 'false');
         if (video.srcObject) {
           video.srcObject.getTracks().forEach(track => track.stop());
           video.srcObject = null;
         }
       }
     });
+
+    // Auto-start if it was enabled on a previous page
+    if (sessionStorage.getItem('handTrackingEnabled') === 'true') {
+      setTimeout(() => btn.click(), 300);
+    }
   };
 
   // Wait for window load to ensure MediaPipe CDN script has parsed completely
