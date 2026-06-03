@@ -668,4 +668,164 @@ document.addEventListener('DOMContentLoaded', () => {
     // Small timeout to ensure fonts and DOM are fully ready before splitting
     setTimeout(initAnimations, 100);
   }
+
+  // --- HAND GESTURE DETECTION (MediaPipe) ---
+  const initHandTracking = async () => {
+    const btn = document.getElementById('hand-tracking-btn');
+    if (!btn) return;
+
+    const statusText = btn.querySelector('.hand-status');
+    const video = document.getElementById('webcam-feed');
+    let gestureRecognizer = null;
+    let webcamRunning = false;
+    let lastVideoTime = -1;
+    let isCooldown = false; // For click debouncing
+
+    // Check if webcam access is supported
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      console.warn("getUserMedia() is not supported by your browser");
+      btn.style.display = 'none';
+      return;
+    }
+
+    // Load MediaPipe Model
+    const loadModel = async () => {
+      try {
+        statusText.textContent = "Loading...";
+        statusText.classList.add('loading');
+        
+        // MediaPipe Tasks Vision globals
+        const { GestureRecognizer, FilesetResolver } = window;
+        if (!GestureRecognizer || !FilesetResolver) {
+          throw new Error("MediaPipe libraries not found on window object.");
+        }
+
+        const vision = await FilesetResolver.forVisionTasks(
+          "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/wasm"
+        );
+        gestureRecognizer = await GestureRecognizer.createFromOptions(vision, {
+          baseOptions: {
+            modelAssetPath: "https://storage.googleapis.com/mediapipe-models/gesture_recognizer/gesture_recognizer/float16/1/gesture_recognizer.task",
+            delegate: "GPU"
+          },
+          runningMode: "VIDEO",
+          numHands: 1
+        });
+        return true;
+      } catch (err) {
+        console.error("Failed to load GestureRecognizer", err);
+        statusText.textContent = "Error";
+        statusText.classList.remove('loading');
+        return false;
+      }
+    };
+
+    // Predict WebCam loop
+    const predictWebcam = async () => {
+      if (!webcamRunning) return;
+
+      if (video.currentTime !== lastVideoTime) {
+        lastVideoTime = video.currentTime;
+        
+        const results = gestureRecognizer.recognizeForVideo(video, performance.now());
+        
+        if (results.landmarks && results.landmarks.length > 0) {
+          // Get the index finger tip (landmark 8)
+          const indexFingerTip = results.landmarks[0][8];
+          
+          // Map coordinates to screen
+          // Webcam is usually mirrored, so we invert X.
+          const x = (1 - indexFingerTip.x) * window.innerWidth;
+          const y = indexFingerTip.y * window.innerHeight;
+
+          // We must dispatch the synthetic mousemove on the element under the finger 
+          // so hover effects and GSAP logic trigger naturally.
+          const elementUnderFinger = document.elementFromPoint(x, y) || document.body;
+          
+          const moveEvent = new MouseEvent('mousemove', {
+            view: window,
+            bubbles: true,
+            cancelable: true,
+            clientX: x,
+            clientY: y
+          });
+          elementUnderFinger.dispatchEvent(moveEvent);
+
+          // Check for clicks (Closed_Fist)
+          if (results.gestures.length > 0 && results.gestures[0].length > 0) {
+            const gestureCategory = results.gestures[0][0].categoryName;
+            
+            if (gestureCategory === "Closed_Fist" && !isCooldown) {
+              isCooldown = true;
+              
+              // Add a click effect to the cursor (scale down quickly)
+              const cursorOutline = document.querySelector('.cursor-outline');
+              if (cursorOutline) {
+                gsap.to(cursorOutline, {scale: 0.5, duration: 0.1, yoyo: true, repeat: 1});
+              }
+
+              // Simulate click
+              const clickEvent = new MouseEvent('click', {
+                view: window,
+                bubbles: true,
+                cancelable: true,
+                clientX: x,
+                clientY: y
+              });
+              elementUnderFinger.dispatchEvent(clickEvent);
+
+              // Cooldown to prevent multiple clicks per second
+              setTimeout(() => { isCooldown = false; }, 1000);
+            }
+          }
+        }
+      }
+      
+      // Keep looping
+      if (webcamRunning) {
+        requestAnimationFrame(predictWebcam);
+      }
+    };
+
+    // Toggle button logic
+    btn.addEventListener('click', async () => {
+      if (!gestureRecognizer) {
+        const loaded = await loadModel();
+        if (!loaded) return;
+      }
+
+      if (!webcamRunning) {
+        // Start Webcam
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480 } });
+          video.srcObject = stream;
+          video.addEventListener('loadeddata', () => {
+            webcamRunning = true;
+            btn.classList.add('active');
+            statusText.textContent = "Active";
+            statusText.classList.remove('loading');
+            document.body.classList.add('hand-tracking-active');
+            predictWebcam();
+          });
+        } catch (err) {
+          console.error("Camera access denied or failed", err);
+          statusText.textContent = "Denied";
+          statusText.classList.remove('loading');
+        }
+      } else {
+        // Stop Webcam
+        webcamRunning = false;
+        btn.classList.remove('active');
+        statusText.textContent = "Off";
+        document.body.classList.remove('hand-tracking-active');
+        if (video.srcObject) {
+          video.srcObject.getTracks().forEach(track => track.stop());
+          video.srcObject = null;
+        }
+      }
+    });
+  };
+
+  // Wait for window load to ensure MediaPipe CDN script has parsed completely
+  window.addEventListener('load', initHandTracking);
 });
