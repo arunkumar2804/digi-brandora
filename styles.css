@@ -992,10 +992,9 @@ a {
 .pillar-table {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border: 1px solid rgba(15, 23, 42, 0.15);
+  gap: 24px;
   position: relative;
   background-color: transparent;
-  box-shadow: var(--shadow-sm);
 }
 
 .pillar-cell {
@@ -1029,43 +1028,13 @@ a {
   }
 }
 
-/* Internal dividing lines */
-.pillar-table > .pillar-cell:nth-child(odd) {
-  border-right: 1px solid rgba(15, 23, 42, 0.15);
-}
-.pillar-table > .pillar-cell:nth-child(1),
-.pillar-table > .pillar-cell:nth-child(2) {
-  border-bottom: 1px solid rgba(15, 23, 42, 0.15);
-}
-
-/* Technical blueprint crosshair ticks at border centers */
+/* Internal dividing lines removed */
 .pillar-table-tick-left,
-.pillar-table-tick-right {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 14px;
-  height: 1px;
-  background-color: rgba(15, 23, 42, 0.5);
-  z-index: 5;
-  pointer-events: none;
-}
-.pillar-table-tick-left { left: -7px; }
-.pillar-table-tick-right { right: -7px; }
-
+.pillar-table-tick-right,
 .pillar-table-tick-top,
 .pillar-table-tick-bottom {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1px;
-  height: 14px;
-  background-color: rgba(15, 23, 42, 0.5);
-  z-index: 5;
-  pointer-events: none;
+  display: none !important;
 }
-.pillar-table-tick-top { top: -7px; }
-.pillar-table-tick-bottom { bottom: -7px; }
 
 /* Cell Content Styles */
 .cell-num {
@@ -1138,24 +1107,9 @@ a {
   .pillar-table {
     grid-template-columns: 1fr;
   }
-  
-  .pillar-table > .pillar-cell:nth-child(odd) {
-    border-right: none;
-  }
-  
-  .pillar-table > .pillar-cell:not(:last-child) {
-    border-bottom: 1px solid rgba(15, 23, 42, 0.15);
-  }
 
   .pillar-cell {
     padding: 44px 32px;
-  }
-
-  .pillar-table-tick-left,
-  .pillar-table-tick-right,
-  .pillar-table-tick-top,
-  .pillar-table-tick-bottom {
-    display: none;
   }
 }
 
@@ -1265,16 +1219,12 @@ a {
 .apart-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--clr-border-light);
-  border-left: 1px solid var(--clr-border-light);
+  gap: 24px;
   margin-top: 50px;
 }
 
 .apart-cell {
   padding: 50px 40px;
-  background-color: var(--clr-bg-light);
-  border-right: 1px solid var(--clr-border-light);
-  border-bottom: 1px solid var(--clr-border-light);
   transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
