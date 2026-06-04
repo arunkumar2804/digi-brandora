@@ -3908,12 +3908,28 @@ body.gesture-loading .cursor-outline {
   100% { transform: translate(-50%, -50%) rotate(360deg) scale(0.8); border-color: rgba(0, 223, 130, 1); }
 }
 
-/* --- KINETIC TYPOGRAPHY --- */
-h1.kinetic-text, h2.kinetic-text, h1:not(.modal-title), h2:not(.modal-title) {
-  /* Using font-variation-settings for dynamic variable font properties */
-  font-variation-settings: "wght" 500, "slnt" 0;
-  transition: font-variation-settings 0.15s ease-out;
-  will-change: font-variation-settings;
+/* --- WEBGL CANVAS --- */
+#webgl-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -100;
+  pointer-events: none;
+}
+
+/* --- HEADING MAGNIFY (HOVER) --- */
+.heading-magnify {
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.heading-magnify:hover {
+  transform: scale(1.05);
+  color: var(--clr-accent);
 }
 
 /* --- WARP SPEED PAGE TRANSITION --- */

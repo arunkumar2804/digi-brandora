@@ -900,59 +900,178 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // --- KINETIC TYPOGRAPHY ---
-  const initKineticTypography = () => {
-    const kineticElements = document.querySelectorAll('h1, h2:not(.modal-title)');
-    kineticElements.forEach(el => el.classList.add('kinetic-text'));
+  // --- HEADING MAGNIFY ---
+  const initHeadingMagnify = () => {
+    const headings = document.querySelectorAll('h1, h2:not(.modal-title)');
+    headings.forEach(el => el.classList.add('heading-magnify'));
+  };
+  initHeadingMagnify();
 
-    let currentWght = 500;
-    let currentSlnt = 0;
-    let targetWght = 500;
-    let targetSlnt = 0;
-    let scrollVelocity = 0;
-    let lastScrollY = window.scrollY;
+  // --- THREE.JS BACKGROUND & SCROLLYTELLING ---
+  const initThreeJSScene = () => {
+    if (typeof THREE === 'undefined') {
+      console.warn('Three.js is not loaded.');
+      return;
+    }
 
-    window.addEventListener('mousemove', (e) => {
-      const xPos = (e.clientX / window.innerWidth) - 0.5;
-      targetSlnt = xPos * -10; 
-      
-      const yPos = (e.clientY / window.innerHeight);
-      targetWght = 200 + (yPos * 600);
-    });
+    const canvas = document.getElementById('webgl-canvas');
+    if (!canvas) return;
 
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.scrollY;
-      const delta = currentScroll - lastScrollY;
-      lastScrollY = currentScroll;
-      
-      scrollVelocity = delta * 2;
-      
-      targetWght = Math.max(100, Math.min(900, targetWght + Math.abs(scrollVelocity)));
-      targetSlnt = Math.max(-10, Math.min(0, targetSlnt - (scrollVelocity * 0.1)));
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x06080e, 0.001);
 
-      clearTimeout(window.scrollResetTimeout);
-      window.scrollResetTimeout = setTimeout(() => {
-        scrollVelocity = 0;
-      }, 50);
-    });
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 30;
 
-    const animateKinetic = () => {
-      currentWght += (targetWght - currentWght) * 0.1;
-      currentSlnt += (targetSlnt - currentSlnt) * 0.1;
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-      kineticElements.forEach(el => {
-        el.style.fontVariationSettings = `"wght" ${currentWght}, "slnt" ${currentSlnt}`;
-      });
+    // 1. Particle System (Fluid-like reaction)
+    const particleCount = 2000;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const originalPositions = new Float32Array(particleCount * 3);
 
-      requestAnimationFrame(animateKinetic);
-    };
+    for (let i = 0; i < particleCount * 3; i++) {
+      const val = (Math.random() - 0.5) * 100;
+      positions[i] = val;
+      originalPositions[i] = val;
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     
-    animateKinetic();
+    const material = new THREE.PointsMaterial({
+      size: 0.15,
+      color: 0x00df82,
+      transparent: true,
+      opacity: 0.6,
+      blending: THREE.AdditiveBlending
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    // 2. Main 3D Scrollytelling Object
+    const objGroup = new THREE.Group();
+    scene.add(objGroup);
+
+    const coreGeom = new THREE.IcosahedronGeometry(8, 1);
+    const coreMat = new THREE.MeshBasicMaterial({ 
+      color: 0x00df82, 
+      wireframe: true, 
+      transparent: true, 
+      opacity: 0.15 
+    });
+    const coreMesh = new THREE.Mesh(coreGeom, coreMat);
+    objGroup.add(coreMesh);
+
+    const innerGeom = new THREE.IcosahedronGeometry(5, 0);
+    const innerMat = new THREE.MeshStandardMaterial({ 
+      color: 0x025a4f,
+      roughness: 0.4,
+      metalness: 0.8
+    });
+    const innerMesh = new THREE.Mesh(innerGeom, innerMat);
+    objGroup.add(innerMesh);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+    const pointLight = new THREE.PointLight(0x00df82, 2, 50);
+    pointLight.position.set(10, 10, 10);
+    scene.add(pointLight);
+
+    // Mouse Interaction for Particles
+    let mouse = new THREE.Vector2(-9999, -9999);
+    window.addEventListener('mousemove', (event) => {
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    });
+
+    const raycaster = new THREE.Raycaster();
+    const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+    const mousePos3D = new THREE.Vector3();
+
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.to(objGroup.position, {
+        y: -15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "body",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1
+        }
+      });
+      
+      gsap.to(objGroup.rotation, {
+        x: Math.PI * 4,
+        y: Math.PI * 4,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "body",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1
+        }
+      });
+    }
+
+    const clock = new THREE.Clock();
+
+    const animate = () => {
+      requestAnimationFrame(animate);
+      const elapsedTime = clock.getElapsedTime();
+
+      particles.rotation.y = elapsedTime * 0.05;
+      particles.rotation.x = elapsedTime * 0.02;
+      objGroup.position.x = Math.sin(elapsedTime * 0.5) * 1;
+      
+      raycaster.setFromCamera(mouse, camera);
+      raycaster.ray.intersectPlane(plane, mousePos3D);
+
+      const positionsAttr = geometry.attributes.position;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const i3 = i * 3;
+        const px = positionsAttr.array[i3];
+        const py = positionsAttr.array[i3 + 1];
+        const pz = positionsAttr.array[i3 + 2];
+        const ox = originalPositions[i3];
+        const oy = originalPositions[i3 + 1];
+        const oz = originalPositions[i3 + 2];
+
+        const dx = px - (mousePos3D.x * 2);
+        const dy = py - (mousePos3D.y * 2);
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist < 10) {
+          const force = (10 - dist) / 10;
+          positionsAttr.array[i3] += (dx / dist) * force * 0.5;
+          positionsAttr.array[i3 + 1] += (dy / dist) * force * 0.5;
+        } else {
+          positionsAttr.array[i3] += (ox - px) * 0.05;
+          positionsAttr.array[i3 + 1] += (oy - py) * 0.05;
+          positionsAttr.array[i3 + 2] += (oz - pz) * 0.05;
+        }
+      }
+      positionsAttr.needsUpdate = true;
+
+      renderer.render(scene, camera);
+    };
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
   };
 
-  if (typeof gsap !== 'undefined') {
-    initKineticTypography();
-  }
+  window.addEventListener('load', () => {
+    initThreeJSScene();
+  });
 
   // --- WARP SPEED PAGE TRANSITIONS ---
   const initPageTransitions = () => {
