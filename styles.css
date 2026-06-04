@@ -24,10 +24,10 @@
   --font-heading: 'Inter', sans-serif;
 
   /* Color Palette - Premium Emerald & Deep Charcoal */
-  --clr-bg-dark: #06080e;
-  --clr-bg-card-dark: rgba(11, 15, 25, 0.85);
-  --clr-bg-light: #ffffff;
-  --clr-bg-slate: #f8fafc;
+  --clr-bg-dark: transparent;
+  --clr-bg-card-dark: rgba(255, 255, 255, 0.05);
+  --clr-bg-light: transparent;
+  --clr-bg-slate: transparent;
   
   --clr-primary: #025a4f;      /* Classic Editorial Forest Green */
   --clr-primary-light: #037567;
@@ -35,13 +35,13 @@
   --clr-accent: #00DF82;       /* Vibrant Emerald Mint -> Updated to #00DF82 Accent Color */
   --clr-accent-glow: rgba(0, 223, 130, 0.4);
   
-  --clr-text-dark: #0f172a;
+  --clr-text-dark: #ffffff; /* Bright text everywhere */
   --clr-text-light: #f8fafc;
-  --clr-text-muted-dark: #64748b;
+  --clr-text-muted-dark: #cbd5e1; /* Lightened for dark mode */
   --clr-text-muted-light: #94a3b8;
   
-  --clr-border-light: rgba(15, 23, 42, 0.08);
-  --clr-border-dark: rgba(248, 250, 252, 0.08);
+  --clr-border-light: rgba(255, 255, 255, 0.1);
+  --clr-border-dark: rgba(255, 255, 255, 0.1);
   --clr-border-glow: rgba(0, 223, 130, 0.2);
 
   /* Transitions & Shadows */
@@ -993,14 +993,14 @@ a {
   grid-template-columns: 1fr 1fr;
   border: 1px solid rgba(15, 23, 42, 0.15);
   position: relative;
-  background-color: #ffffff;
+  background-color: transparent;
   box-shadow: var(--shadow-sm);
 }
 
 .pillar-cell {
   position: relative;
   padding: 64px 48px;
-  background-color: #ffffff;
+  background-color: transparent;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
@@ -2776,7 +2776,7 @@ select.form-control {
 /* Page content under hero section */
 .about-content-sec {
   padding: 100px 0 120px 0;
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 .about-intro-grid {
@@ -3112,7 +3112,7 @@ select.form-control {
 /* Page content under hero section */
 .portfolio-content-sec {
   padding: 100px 0 120px 0;
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 .portfolio-intro-grid {
@@ -3355,7 +3355,7 @@ select.form-control {
 /* Page content under hero section */
 .blog-content-sec {
   padding: 100px 0 120px 0;
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 .blog-meta-top {
@@ -3919,17 +3919,18 @@ body.gesture-loading .cursor-outline {
   pointer-events: none;
 }
 
-/* --- HEADING MAGNIFY (HOVER) --- */
-.heading-magnify {
-  display: inline-block;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
-  transform-origin: center center;
+/* --- GLOBAL GLASSMORPHISM PANELS --- */
+.blog-card, .testimonial-card, .portfolio-item, .service-card, .apart-cell, .pillar-cell, .contact-form-container, .pricing-card, .statement-content, .modal-box, .footer, .glass-panel, .accordion-header, .accordion-body, .service-details, .project-details {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px;
+  color: #fff !important;
 }
 
-.heading-magnify:hover {
-  transform: scale(1.05);
-  color: var(--clr-accent);
+.blog-card h3, .testimonial-card h4, .portfolio-item h3, .service-card h3, .apart-cell h4, .pillar-cell h3, .pricing-card h3, .pricing-card h4, .footer h5 {
+  color: #ffffff !important;
 }
 
 /* --- WARP SPEED PAGE TRANSITION --- */
