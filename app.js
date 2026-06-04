@@ -900,6 +900,141 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // --- KINETIC TYPOGRAPHY ---
+  const initKineticTypography = () => {
+    const kineticElements = document.querySelectorAll('h1, h2:not(.modal-title)');
+    kineticElements.forEach(el => el.classList.add('kinetic-text'));
+
+    let currentWght = 500;
+    let currentSlnt = 0;
+    let targetWght = 500;
+    let targetSlnt = 0;
+    let scrollVelocity = 0;
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('mousemove', (e) => {
+      const xPos = (e.clientX / window.innerWidth) - 0.5;
+      targetSlnt = xPos * -10; 
+      
+      const yPos = (e.clientY / window.innerHeight);
+      targetWght = 200 + (yPos * 600);
+    });
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      const delta = currentScroll - lastScrollY;
+      lastScrollY = currentScroll;
+      
+      scrollVelocity = delta * 2;
+      
+      targetWght = Math.max(100, Math.min(900, targetWght + Math.abs(scrollVelocity)));
+      targetSlnt = Math.max(-10, Math.min(0, targetSlnt - (scrollVelocity * 0.1)));
+
+      clearTimeout(window.scrollResetTimeout);
+      window.scrollResetTimeout = setTimeout(() => {
+        scrollVelocity = 0;
+      }, 50);
+    });
+
+    const animateKinetic = () => {
+      currentWght += (targetWght - currentWght) * 0.1;
+      currentSlnt += (targetSlnt - currentSlnt) * 0.1;
+
+      kineticElements.forEach(el => {
+        el.style.fontVariationSettings = `"wght" ${currentWght}, "slnt" ${currentSlnt}`;
+      });
+
+      requestAnimationFrame(animateKinetic);
+    };
+    
+    animateKinetic();
+  };
+
+  if (typeof gsap !== 'undefined') {
+    initKineticTypography();
+  }
+
+  // --- WARP SPEED PAGE TRANSITIONS ---
+  const initPageTransitions = () => {
+    if (sessionStorage.getItem('warp_incoming') === 'true') {
+      sessionStorage.removeItem('warp_incoming');
+      document.body.classList.add('warp-exit');
+    }
+
+    const navLinks = document.querySelectorAll('a[href]:not([target="_blank"])');
+    
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        
+        if (!href || href.startsWith('#') || href === '#' || href.startsWith('javascript:')) return;
+        if (e.ctrlKey || e.metaKey || e.shiftKey) return;
+        
+        // Avoid handling download links or specific files
+        if (link.hasAttribute('download')) return;
+
+        e.preventDefault();
+
+        const overlay = document.createElement('div');
+        overlay.className = 'warp-overlay';
+        document.body.appendChild(overlay);
+        document.body.classList.add('warp-active');
+
+        const container = document.querySelector('.hero-viewport-container') || document.body;
+        if (container !== document.body) {
+          container.classList.add('page-warp-blur');
+        } else {
+          // If no specific container, blur the whole body except overlay
+          Array.from(document.body.children).forEach(child => {
+            if (child !== overlay) {
+              child.style.transition = 'filter 0.6s cubic-bezier(0.5, 0, 0.2, 1), transform 0.6s cubic-bezier(0.5, 0, 0.2, 1)';
+              child.style.filter = 'blur(30px) brightness(0)';
+              child.style.transform = 'scale(4)';
+            }
+          });
+        }
+
+        // Spawn warp streaks
+        for (let i = 0; i < 50; i++) {
+          const streak = document.createElement('div');
+          streak.className = 'warp-streak';
+          
+          const angle = Math.random() * Math.PI * 2;
+          const radius = Math.random() * 80 + 20; 
+          
+          streak.style.left = `calc(50% + ${Math.cos(angle) * radius}px)`;
+          streak.style.top = `calc(50% + ${Math.sin(angle) * radius}px)`;
+          streak.style.transform = `rotate(${angle + Math.PI/2}rad)`;
+          
+          overlay.appendChild(streak);
+
+          gsap.to(streak, {
+            x: Math.cos(angle) * (window.innerWidth / 1.5),
+            y: Math.sin(angle) * (window.innerWidth / 1.5),
+            scaleY: Math.random() * 8 + 3,
+            opacity: Math.random() * 0.8 + 0.2,
+            duration: Math.random() * 0.3 + 0.4,
+            ease: "power3.in",
+            delay: Math.random() * 0.1
+          });
+        }
+
+        gsap.to(overlay, {
+          backgroundColor: 'rgba(6, 8, 14, 1)',
+          opacity: 1,
+          duration: 0.7,
+          ease: "power2.inOut",
+          onComplete: () => {
+            sessionStorage.setItem('warp_incoming', 'true');
+            window.location.href = href;
+          }
+        });
+      });
+    });
+  };
+
+  initPageTransitions();
+
   // Wait for window load to ensure MediaPipe CDN script has parsed completely
   window.addEventListener('load', initHandTracking);
 });
