@@ -900,12 +900,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // --- HEADING MAGNIFY ---
-  const initHeadingMagnify = () => {
-    const headings = document.querySelectorAll('h1, h2:not(.modal-title)');
-    headings.forEach(el => el.classList.add('heading-magnify'));
-  };
-  initHeadingMagnify();
 
   // --- THREE.JS BACKGROUND & SCROLLYTELLING ---
   const initThreeJSScene = () => {
@@ -1041,14 +1035,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const oy = originalPositions[i3 + 1];
         const oz = originalPositions[i3 + 2];
 
-        const dx = px - (mousePos3D.x * 2);
-        const dy = py - (mousePos3D.y * 2);
+        // Fix: Removed incorrect * 2 scaling so particles react exactly under the mouse pointer
+        const dx = px - mousePos3D.x;
+        const dy = py - mousePos3D.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         
-        if (dist < 10) {
-          const force = (10 - dist) / 10;
-          positionsAttr.array[i3] += (dx / dist) * force * 0.5;
-          positionsAttr.array[i3 + 1] += (dy / dist) * force * 0.5;
+        if (dist < 15) { // Increased interaction radius
+          const force = (15 - dist) / 15;
+          positionsAttr.array[i3] += (dx / dist) * force * 0.8;
+          positionsAttr.array[i3 + 1] += (dy / dist) * force * 0.8;
         } else {
           positionsAttr.array[i3] += (ox - px) * 0.05;
           positionsAttr.array[i3 + 1] += (oy - py) * 0.05;
