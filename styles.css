@@ -2363,8 +2363,6 @@ input:checked + .slider:before {
 }
 
 .contact-method-card {
-  background-color: var(--clr-bg-slate);
-  border: 1px solid var(--clr-border-light);
   border-radius: 12px;
   padding: 24px;
   display: flex;
@@ -2389,27 +2387,42 @@ input:checked + .slider:before {
 .contact-method-text h4 {
   font-size: 1.1rem;
   font-weight: 500;
-  color: var(--clr-text-dark);
+  color: var(--clr-text-light);
   margin-bottom: 4px;
 }
 
 .contact-method-text p {
   font-size: 0.95rem;
-  color: var(--clr-text-muted-dark);
+  color: var(--clr-text-muted-light);
 }
 
 .contact-method-card:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-sm);
-  border-color: rgba(2, 90, 79, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  border-color: var(--clr-accent) !important;
 }
 
 .contact-form-card {
-  background-color: var(--clr-bg-light);
-  border: 1px solid var(--clr-border-light);
-  box-shadow: var(--shadow-md);
-  border-radius: 16px;
   padding: 50px;
+}
+
+.contact-cta-card {
+  margin-top: 30px;
+  border: 1px dashed rgba(255, 255, 255, 0.2) !important;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.02) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.contact-cta-card h4 {
+  color: var(--clr-text-light) !important;
+}
+
+.contact-cta-card p {
+  color: var(--clr-text-muted-light) !important;
 }
 
 @media (max-width: 600px) {
@@ -3874,7 +3887,7 @@ body.gesture-loading .cursor-outline {
 }
 
 /* --- GLOBAL GLASSMORPHISM PANELS --- */
-.blog-card, .testimonial-card, .portfolio-item, .service-card, .apart-cell, .pillar-cell, .contact-form-container, .pricing-card, .statement-content, .modal-box, .footer, .glass-panel, .accordion-header, .accordion-body, .service-details, .project-details {
+.blog-card, .testimonial-card, .portfolio-item, .service-card, .apart-cell, .pillar-cell, .contact-form-container, .pricing-card, .statement-content, .modal-box, .footer, .glass-panel, .accordion-header, .accordion-body, .service-details, .project-details, .contact-method-card, .contact-form-card, .contact-cta-card {
   background: rgba(255, 255, 255, 0.05) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
