@@ -3465,28 +3465,4 @@ select.form-control {
 }
 
 
-/* Update header menu color for inner pages with light backgrounds */
-body:not(.home-page) .nav-link {
-  color: rgba(6, 8, 14, 0.7);
-}
-body:not(.home-page) .nav-link:hover,
-body:not(.home-page) .nav-link.active {
-  color: rgba(6, 8, 14, 1);
-}
-body:not(.home-page) .logo {
-  color: rgba(6, 8, 14, 1);
-}
-body:not(.home-page) .btn-talk {
-  background-color: rgba(6, 8, 14, 1);
-  color: #ffffff !important;
-  border-color: rgba(6, 8, 14, 1);
-}
-body:not(.home-page) .btn-talk:hover {
-  background-color: transparent;
-  color: rgba(6, 8, 14, 1) !important;
-}
-body:not(.home-page) .menu-toggle span {
-  background-color: rgba(6, 8, 14, 1);
-}
 
-/* Ensure the dark theme overrides this if necessary, but these pages seem to be light */
