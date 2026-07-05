@@ -12,16 +12,8 @@
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='10' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/><circle cx='10' cy='18' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/><circle cx='22' cy='18' r='6' stroke='%2310b981' stroke-width='2.5' fill='none'/></svg>">
 </head>
 
-<body class="preloading-active">
-  <script>
-    if (sessionStorage.getItem('brandora_preloaded')) {
-      document.body.classList.remove('preloading-active');
-      document.body.classList.add('preloading-done');
-      var sheet = document.createElement('style');
-      sheet.innerHTML = "#sitePreloader { display: none !important; }";
-      document.head.appendChild(sheet);
-    }
-  </script>
+<body >
+  
 
   <!-- --- PRELOADER SYSTEM --- -->
   <div id="sitePreloader" class="preloader-overlay">
@@ -329,9 +321,6 @@
   </div>
 
   <!-- GSAP & SplitType -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/split-type"></script>
   <script src="app.js"></script>
 </body>
 
