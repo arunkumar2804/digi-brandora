@@ -317,8 +317,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Icon construction based on type
     const icon = type === 'error' 
-      ? '<svg style="width:20px;height:20px;stroke:#ef4444;stroke-width:2.5;fill:none;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>'
-      : '<svg style="width:20px;height:20px;stroke:#10b981;stroke-width:2.5;fill:none;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
+      ? '<svg style="width:20px;height:20px;stroke:#ef4444;stroke-width:2.5;fill:none;flex-shrink:0;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"/></svg>'
+      : '<svg style="width:20px;height:20px;stroke:#10b981;stroke-width:2.5;fill:none;flex-shrink:0;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>';
 
     toast.innerHTML = `
       ${icon}
