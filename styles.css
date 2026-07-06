@@ -3466,3 +3466,10 @@ select.form-control {
 
 
 
+
+/* SVG icons scaling for contact-method-icon */
+.contact-method-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+}
